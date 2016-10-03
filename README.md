@@ -1,24 +1,31 @@
-# README
+# Deportes ECA
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Esta aplicacion es para la administracion de deportes de
+la Escuela de la Ciudad de Aguascalientes
+por [Luis Fernando Flores Oviedo] (https://luisflores.wordpress.com)
 
-Things you may want to cover:
+## Instrucciones
+Clonar el repositorio, luego instalar las gems necesarias con:
 
-* Ruby version
+```
+$bundle install --without production
+```
+A continuacion migrar la base de datos:
 
-* System dependencies
+```
+$rails db:migrate
+```
+Finalmente correr la bateria de pruebas para verificar que todo
+esta correcto.
 
-* Configuration
+```
+$rails test
+```
+Si las pruebas pasan, podra correr la aplicacion en un servidor
+local.
+```
+$rails server
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby version: 2.3.1
+* Rails version: 5.0.0.1
