@@ -5,6 +5,11 @@ source 'https://rubygems.org'
 gem 'rails',                       '5.0.0.1'
 # Use bcrypt to encode password hashes
 gem 'bcrypt',                      '3.1.11'
+# use faker to fill development database
+gem 'faker',                       '1.6.6'
+# Use will-paginate to divide users listing into pages
+gem 'will_paginate',               '3.1.0'
+gem 'bootstrap-will_paginate',     '0.0.10'
 # Use Bootstrap-sass for responsive site
 gem 'bootstrap-sass',              '3.3.6'
 # Use Puma as the app server

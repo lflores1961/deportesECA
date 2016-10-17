@@ -1,0 +1,12 @@
+<% provide(:title, "Modificar datos") %>
+<h1>Modificar datos personales</h1>
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <%= render 'users/form' %>
+    <div class="gravatar_edit">
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails" target="_blank">cambiar</a>
+    </div>
+  </div>
+</div>
