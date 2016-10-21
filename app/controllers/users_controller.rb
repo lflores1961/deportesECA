@@ -4,11 +4,12 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page: params[:page])
   end
 
   def show
     @user = User.find(params[:id])
+    redirect_to root_url and return unless @user.activated?
     # debugger
   end
 
@@ -19,9 +20,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
-      flash[:success] = "Bienvenido a la aplicación de Deportes ECA"
-      redirect_to @user
+      # Uncomment next block to replace email activation if you are not
+      # performing email activation.
+      #log_in @user
+      #flash[:success] = "Bienvenido a la aplicación de Deportes ECA"
+      #redirect_to @user
+      # End of -no activation block-
+      @user.send_activation_email
+      flash[:info] = "Por favor busque su correo de activación en su buzón de correo electrónico"
+      redirect_to root_url
     else
       render 'new'
     end

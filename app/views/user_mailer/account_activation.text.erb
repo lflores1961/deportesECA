@@ -1,0 +1,8 @@
+
+<%= @greeting %> <%= @user.name %>,
+
+Bienvenido a la aplicación de deportes de la Escuela de la Ciudad de Aguacaslientes.
+
+Copia el siguiente enlace en tu navegador para activar tu cuenta.
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

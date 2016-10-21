@@ -84,6 +84,22 @@ p {
   }
 }
 
+#row-cont-jumbo {
+  height: 100%;
+  width: 100%;
+  display: inline-flex;
+}
+
+#left-jumbo #right-jumbo {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 12px;
+}
+
+#right-jumbo {
+  padding-left: 20px;
+}
+
 /* footer */
 
 footer {
