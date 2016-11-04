@@ -6,6 +6,10 @@
 $red: #FF0000;
 $darkRed:  #8B0000;
 $gray-medium-light: #eaeaea;
+$mediumBlue: #0000cd;
+$blue: #0000ff;
+$cornFlowerBlue: #6495ed;
+$royalBlue: #4169e1;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -38,6 +42,12 @@ textarea {
   background-color: $red;
   background: linear-gradient($red, $darkRed);
   color: #ffffff;
+}
+
+.btn-default {
+  color: white;
+  background-color: $royalBlue;
+  border-color: $royalBlue;
 }
 
 /* Typography */
@@ -124,6 +134,20 @@ footer {
       margin-left: 15px;
     }
   }
+}
+
+table, th, td {
+  border: 1px solid $gray-medium-light;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+td {
+  text-align: center;
+}
+
+td.categoria {
+  text-align: left;
 }
 
 /* Sidebar */

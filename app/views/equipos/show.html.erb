@@ -1,0 +1,32 @@
+<% provide(:title, "Equipos") %>
+<div class="container-fluid bg-2">
+  <p id="notice">
+    <%= notice %>
+  </p>
+
+  <h4><b><%= @equipo.name %></b></h4>
+  <table>
+    <tbody>
+      <tr>
+        <td class="equipo">Categoría:</td>
+        <td class="equipo"><%= @equipo.categoria %></td>
+      </tr>
+      <tr>
+        <td class="equipo">Deporte:</td>
+        <td class="equipo"><%= @equipo.deporte %></td>
+      </tr>
+      <tr>
+        <td class="equipo">Rama:</td>
+        <td class="equipo"><%= @equipo.rama %></td>
+      </tr>
+      <tr>
+        <td class="equipo">Entrenador:</td>
+        <td class="equipo"><%= @categoria.user_id %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= link_to '', edit_equipo_path(@equipo), class: "glyphicon glyphicon-edit" %>
+  <%= link_to '', @equipo, class: "glyphicon glyphicon-trash", method: :delete,
+      data: { confirm: '¿Está seguro?' } %>
+</div>

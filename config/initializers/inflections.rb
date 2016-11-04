@@ -11,6 +11,11 @@
 # end
 
 # These inflection rules are supported but not enabled by default:
-# ActiveSupport::Inflector.inflections(:en) do |inflect|
-#   inflect.acronym 'RESTful'
-# end
+#ActiveSupport::Inflector.inflections(:en) do |inflect|
+#  inflect.acronym 'RESTful'
+#end
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.irregular 'Equipo', 'equipos'
+  inflect.irregular 'Jugador', 'jugadores'
+  inflect.irregular 'Categoria', 'categorias'
+end

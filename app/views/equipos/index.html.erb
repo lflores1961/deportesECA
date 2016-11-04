@@ -1,0 +1,24 @@
+<% provide(:title, 'Listado de equipos') %>
+<h1>Listado de equipos</h1>
+
+<%= link_to 'Crear equipo', new_equipo_path, class: "btn btn-default" %>
+
+<%= will_paginate %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Equipo</th>
+      <th>Categoría</th>
+      <th>Deporte</th>
+      <th>Rama</th>
+      <th>Entrenador</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @equipos %>
+  </tbody>
+</table>
+
+<%= will_paginate %>

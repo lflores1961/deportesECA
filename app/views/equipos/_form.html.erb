@@ -1,0 +1,37 @@
+<div class="bg-2">
+  <%= form_for(@equipo) do |f| %>
+    <% if @equipo.errors.any? %>
+      <div id="error_explanation">
+        <h4><%= pluralize(@equipo.errors.count, "errores") %> impidieron que el equipo se guarde:</h4>
+        <ul>
+          <% @equipo.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field-tm">
+      <%= f.label :name, "Equipo" %>
+      <%= f.text_field :name, :placeholder => "Nombre del equipo" %>
+    </div>
+    <div class="field-tm">
+      <%= f.label :categoria %>
+      <%= f.collection_select( :categoria, @categorias, :id, :nombre, :placeholder => "Categoría del equipo") %>
+    </div>
+    <div class="field-tm">
+      <%= f.label :deporte %>
+      <%= f.select :deporte, @deportes, :placeholder => "Deporte que practica el equipo" %>
+    </div>
+    <div class="field-tm">
+      <%= f.label :rama %>
+      <%= f.select :rama, @ramas, :placeholder => "Rama del equipo" %>
+    </div>
+    <div class="field-tm">
+      <%= f.label :user_id, "Entrenador" %>
+      <%= f.collection_select( :user_id, @usuarios, :id, :name, :placeholder => "Entrenador del equipo") %>
+    </div>
+
+    <%= f.submit "Guardar", class: "btn btn-default" %>
+  <% end %>
+</div>

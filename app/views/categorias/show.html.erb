@@ -1,0 +1,28 @@
+<% provide(:title, "Categorías") %>
+<div class="container-fluid bg-2">
+  <p id="notice">
+    <%= notice %>
+  </p>
+
+  <h4><b><%= @categoria.nombre %></b></h4>
+  <table>
+    <tbody>
+      <tr>
+        <td class="categoria">Deporte:</td>
+        <td class="categoria"><%= @categoria.deporte %></td>
+      </tr>
+      <tr>
+        <td class="categoria">Fecha Nac. Inf.:</td>
+        <td class="categoria"><%= @categoria.limInferior.strftime("%d/%m/%Y") %></td>
+      </tr>
+      <tr>
+        <td class="categoria">Fecha Nac. Sup.:</td>
+        <td class="categoria"><%= @categoria.limSuperior.strftime("%d/%m/%Y") %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= link_to '', edit_categoria_path(@categoria), class: "glyphicon glyphicon-edit" %>
+  <%= link_to '', @categoria, class: "glyphicon glyphicon-trash", method: :delete,
+      data: { confirm: '¿Está seguro?' } %>
+</div>

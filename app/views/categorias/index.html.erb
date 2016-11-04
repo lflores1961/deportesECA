@@ -1,0 +1,27 @@
+<% provide(:title, 'Listado de categorías') %>
+<h1>Listado de categorías</h1>
+
+<%= link_to 'Crear categoría', new_categoria_path, class: "btn btn-default" %>
+
+<%= will_paginate %>
+
+<!-- Uncomment this block if unordered list is used
+# <ul class="categorias">
+  <%= render @categorias %>
+</ul>
+-->
+<table>
+  <thead>
+    <tr>
+      <th>Categoría</th>
+      <th>Fecha Nac. Inf.</th>
+      <th>Fecha Nac. Sup.</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @categorias %>
+  </tbody>
+</table>
+
+<%= will_paginate %>

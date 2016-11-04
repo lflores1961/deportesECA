@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  limInferior: 2016-10-30 22:48:52
+  limSuperior: 2016-10-30 22:48:52
+
+two:
+  nombre: MyString
+  limInferior: 2016-10-30 22:48:52
+  limSuperior: 2016-10-30 22:48:52

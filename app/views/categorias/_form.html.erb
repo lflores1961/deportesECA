@@ -1,0 +1,29 @@
+<div class="bg-2">
+  <%= form_for(@categoria) do |f| %>
+    <% if @categoria.errors.any? %>
+      <div id="error_explanation">
+        <h4><%= pluralize(@categoria.errors.count, "errores") %> impidieron que la categoría se guarde:</h4>
+        <ul>
+          <% @categoria.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field-tm">
+      <%= f.label :nombre, "Categoría" %>
+      <%= f.text_field :nombre, :placeholder => "Nombre de la categoría" %>
+    </div>
+
+    <div class="field-tm">
+      <%= f.label :limInferior, "Fecha Lim. Inferior" %>
+      <%= f.date_field :limInferior, :placeholder => "Fecha de nacimiento límite inferior." %>
+    </div>
+    <div class="field-tm">
+      <%= f.label :limSuperior, "Fecha Lim. Superior" %>
+      <%= f.date_field :limSuperior, :placeholder => "Fecha de nacimiento límite superior." %>
+    </div>
+    <%= f.submit "Guardar", class: "btn btn-default" %>
+  <% end %>
+</div>

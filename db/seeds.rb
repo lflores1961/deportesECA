@@ -24,3 +24,22 @@ User.create!(name:                   "Fernando Flores",
                activated:             true,
                activated_at:          Time.zone.now)
 end
+
+8.times do
+  nombre = Faker::Lorem.word
+  limiteIn = Date.today.strftime("%d/%m/%Y")
+  limiteSu = Date.today.strftime("%d/%m/%Y")
+  Categoria.create!(nombre: nombre, limInferior: limiteIn, limSuperior: limiteSu)
+end
+
+users = User.order(:created_at).take(5)
+cat = 0
+users.each do |user|
+  cat += 1
+  2.times do
+    name = Faker::Lorem.word
+    rama = Faker::Lorem.word
+    depo = Faker::Lorem.word
+    user.equipos.create!(name: name, categoria: cat, deporte: depo, rama: rama)
+  end
+end
