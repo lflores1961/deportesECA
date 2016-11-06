@@ -5,11 +5,11 @@ osos:
   categoria: 1
   deporte: Soccer
   rama: Varonil
-  user: one
+  user: michael
 
 raptors:
   name: Raptors
   categoria: 2
   deporte: Basketball
   rama: Femenil
-  user: two
+  user: michael

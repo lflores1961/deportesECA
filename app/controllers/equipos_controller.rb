@@ -13,6 +13,8 @@ class EquiposController < ApplicationController
   # GET /equipos/1
   # GET /equipos/1.json
   def show
+    @entrenador = User.find(@equipo.user_id)
+    @categoria = Categoria.find(@equipo.categoria)
   end
 
   # GET /equipos/new

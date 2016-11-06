@@ -1,0 +1,56 @@
+<div class="bg-2">
+  <%= form_for(@player) do |f| %>
+    <% if @player.errors.any? %>
+      <div id="error_explanation">
+        <h4><%= pluralize(@player.errors.count, "errores") %> impidieron que el jugador se guarde:</h4>
+        <ul>
+          <% @player.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field-tm">
+      <%= f.label :apellidoPaterno %>
+      <%= f.text_field :apellidoPaterno %>
+    </div>
+    <div class="field-tm">
+      <%= f.label :apellidoMaterno %>
+      <%= f.text_field :apellidoMaterno %>
+    </div>
+    <div class="field-tm">
+      <%= f.label :nombres %>
+      <%= f.text_field :nombres %>
+    </div>
+    <div class="field-tm">
+      <%= f.label :fechaNacimiento %>
+      <%= f.text_field :fechaNacimiento %>
+    </div>
+    <div class="field-tm">
+      <%= f.label :equipo %>
+      <%= f.collection_select( :equipo_id, @equipos, :id, :name, :placeholder => "Equipo") %>
+    </div>
+    <div class="field-tm">
+      <%= f.label :seccion %>
+      <%= f.select :seccion, @secciones, :placeholder => "Sección" %>
+    </div>
+    <div class="field-tm">
+      <%= f.label :grupo %>
+      <%= f.text_field :grupo %>
+    </div>
+    <div class="field-tm">
+      <%= f.label :genero %>
+      <%= f.select :genero, @generos, :placeholder => "Género" %>
+    </div>
+    <div class="field-tm">
+      <%= f.label :beca, class: "checkbox inline" do %>
+          <%= f.check_box :beca %>
+          <span>Indique si el alumno tiene beca</span>
+      <% end %>
+
+    </div>
+
+    <%= f.submit "Guardar", class: "btn btn-default" %>
+  <% end %>
+</div>

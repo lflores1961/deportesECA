@@ -8,10 +8,6 @@
   <table>
     <tbody>
       <tr>
-        <td class="categoria">Deporte:</td>
-        <td class="categoria"><%= @categoria.deporte %></td>
-      </tr>
-      <tr>
         <td class="categoria">Fecha Nac. Inf.:</td>
         <td class="categoria"><%= @categoria.limInferior.strftime("%d/%m/%Y") %></td>
       </tr>
@@ -21,8 +17,9 @@
       </tr>
     </tbody>
   </table>
-
-  <%= link_to '', edit_categoria_path(@categoria), class: "glyphicon glyphicon-edit" %>
-  <%= link_to '', @categoria, class: "glyphicon glyphicon-trash", method: :delete,
-      data: { confirm: '¿Está seguro?' } %>
+  <% if current_user.admin? %>
+    <%= link_to '', edit_categoria_path(@categoria), class: "glyphicon glyphicon-edit" %>
+    <%= link_to '', @categoria, class: "glyphicon glyphicon-trash", method: :delete,
+        data: { confirm: '¿Está seguro?' } %>
+  <% end %>
 </div>

@@ -9,7 +9,7 @@
     <tbody>
       <tr>
         <td class="equipo">Categoría:</td>
-        <td class="equipo"><%= @equipo.categoria %></td>
+        <td class="equipo"><%= @categoria.nombre %></td>
       </tr>
       <tr>
         <td class="equipo">Deporte:</td>
@@ -21,12 +21,13 @@
       </tr>
       <tr>
         <td class="equipo">Entrenador:</td>
-        <td class="equipo"><%= @categoria.user_id %></td>
+        <td class="equipo"><%= @entrenador.name %></td>
       </tr>
     </tbody>
   </table>
-
-  <%= link_to '', edit_equipo_path(@equipo), class: "glyphicon glyphicon-edit" %>
-  <%= link_to '', @equipo, class: "glyphicon glyphicon-trash", method: :delete,
-      data: { confirm: '¿Está seguro?' } %>
+  <% if current_user.admin? %>
+    <%= link_to '', edit_equipo_path(@equipo), class: "glyphicon glyphicon-edit" %>
+    <%= link_to '', @equipo, class: "glyphicon glyphicon-trash", method: :delete,
+        data: { confirm: '¿Está seguro?' } %>
+  <% end %>
 </div>
