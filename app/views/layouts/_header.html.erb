@@ -8,8 +8,8 @@
         <li><%= link_to "Inicio",  root_path %></li>
         <li><%= link_to "Ayuda",   help_path %></li>
         <% if logged_in? %>
-          <li><%= link_to "Usuarios", users_path %></li>
           <% if current_user.admin? %>
+            <li><%= link_to "Usuarios", users_path %></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Mantenimiento <b class="caret"></b>

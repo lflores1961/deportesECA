@@ -26,28 +26,22 @@ class CategoriasController < ApplicationController
   def create
     @categoria = Categoria.new(categoria_params)
 
-    respond_to do |format|
-      if @categoria.save
-        format.html { redirect_to categorias_path, notice: 'Se inserto exitosamente la nueva categoría.' }
-        format.json { render :show, status: :created, location: @categoria }
-      else
-        format.html { render :new }
-        format.json { render json: @categoria.errors, status: :unprocessable_entity }
-      end
+    if @categoria.save
+      flash[:success] = 'Se inserto exitosamente la nueva categoría.'
+      redirect_to categorias_path
+    else
+      render 'new'
     end
   end
 
   # PATCH/PUT /categorias/1
   # PATCH/PUT /categorias/1.json
   def update
-    respond_to do |format|
-      if @categoria.update(categoria_params)
-        format.html { redirect_to categorias_path, notice: 'Se actualizó exitosamente la Categoría.' }
-        format.json { render :show, status: :ok, location: @categoria }
-      else
-        format.html { render :edit }
-        format.json { render json: @categoria.errors, status: :unprocessable_entity }
-      end
+    if @categoria.update(categoria_params)
+      flash[:success] = 'Se actualizó exitosamente la Categoría.'
+      redirect_to categorias_path
+    else
+      render 'edit'
     end
   end
 
@@ -55,10 +49,8 @@ class CategoriasController < ApplicationController
   # DELETE /categorias/1.json
   def destroy
     @categoria.destroy
-    respond_to do |format|
-      format.html { redirect_to categorias_url, notice: 'Se eliminó correctamente la categoría.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = 'Se eliminó correctamente la categoría.'
+    redirect_to categorias_url
   end
 
   private

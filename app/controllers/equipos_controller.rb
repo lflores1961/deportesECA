@@ -33,28 +33,23 @@ class EquiposController < ApplicationController
   def create
     @equipo = Equipo.new(equipo_params)
 
-    respond_to do |format|
-      if @equipo.save
-        format.html { redirect_to equipos_path, notice: 'Se inserto exitosamente la nueva categoría.' }
-        format.json { render :show, status: :created, location: @equipo }
-      else
-        format.html { render :new }
-        format.json { render json: @equipo.errors, status: :unprocessable_entity }
-      end
+    if @equipo.save
+      flash[:success] = 'Se inserto exitosamente la nueva categoría.'
+      redirect_to equipos_path
+    else
+      render 'new'
     end
   end
 
   # PATCH/PUT /equipos/1
   # PATCH/PUT /equipos/1.json
   def update
-    respond_to do |format|
-      if @equipo.update(equipo_params)
-        format.html { redirect_to equipos_path, notice: 'Se actualizó exitosamente el equipo.' }
-        format.json { render :show, status: :ok, location: @equipo }
-      else
-        format.html { render :edit }
-        format.json { render json: @equipo.errors, status: :unprocessable_entity }
-      end
+
+    if @equipo.update(equipo_params)
+      flash[:success] = 'Se actualizó exitosamente el equipo.'
+      redirect_to equipos_path
+    else
+      render 'edit'
     end
   end
 
@@ -62,10 +57,8 @@ class EquiposController < ApplicationController
   # DELETE /equipos/1.json
   def destroy
     @equipo.destroy
-    respond_to do |format|
-      format.html { redirect_to equipos_url, notice: 'Se eliminó correctamente el equipo.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = 'Se eliminó correctamente el equipo.'
+    redirect_to equipos_url
   end
 
   private

@@ -31,28 +31,23 @@ before_action :set_generos,   only: [:new, :edit, :update, :create]
   def create
     @player = Player.new(player_params)
 
-    respond_to do |format|
-      if @player.save
-        format.html { redirect_to players_path, notice: 'Se inserto exitosamente el nuevo jugador.' }
-        format.json { render :show, status: :created, location: @player }
-      else
-        format.html { render :new }
-        format.json { render json: @player.errors, status: :unprocessable_entity }
-      end
+    if @player.save
+      flash[:success] = 'Se inserto exitosamente el nuevo jugador.'
+      redirect_to players_path
+    else
+      render 'new'
     end
   end
 
   # PATCH/PUT /players/1
   # PATCH/PUT /players/1.json
   def update
-    respond_to do |format|
-      if @player.update(player_params)
-        format.html { redirect_to players_path, notice: 'Se actualizó exitosamente el jugador.' }
-        format.json { render :show, status: :ok, location: @player }
-      else
-        format.html { render :edit }
-        format.json { render json: @player.errors, status: :unprocessable_entity }
-      end
+
+    if @player.update(player_params)
+      flash[:success] = 'Se actualizó exitosamente el jugador.'
+      redirect_to players_path
+    else
+      render 'edit'
     end
   end
 
@@ -60,10 +55,8 @@ before_action :set_generos,   only: [:new, :edit, :update, :create]
   # DELETE /players/1.json
   def destroy
     @player.destroy
-    respond_to do |format|
-      format.html { redirect_to players_url, notice: 'Se eliminó correctamente el equipo.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = 'Se eliminó correctamente el equipo.'
+    redirect_to players_url
   end
 
   private

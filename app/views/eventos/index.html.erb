@@ -1,0 +1,23 @@
+<% provide(:title, 'Eventos') %>
+<h1>Listado de eventos</h1>
+
+<%= link_to 'Crear evento', new_evento_path, class: "btn btn-default" %>
+
+<%= will_paginate %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Tipo</th>
+      <th>Equipo</th>
+      <th>Comentarios</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @eventos %>
+  </tbody>
+</table>
+
+<%= will_paginate %>

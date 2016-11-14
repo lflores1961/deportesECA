@@ -1,19 +1,29 @@
-<div class="center jumbotron">
-  <div id="row-cont-jumbo">
-    <div id="left-jumbo">
-      <h1>Formando Campeones</h1>
-    </div>
-    <div id="right-jumbo">
-      <%= image_tag "castor.gif",  size: "100x70" %>
-    </div>
-
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-sm-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+    </aside>
+    <!-- Here goes the div containing the equipos eventos -->
   </div>
 
-  <h2>
-    Administración de
-    <strong>Deportes</strong>
-  </h2>
+<% else %>
+  <div class="center jumbotron">
+    <div id="row-cont-jumbo">
+      <div id="left-jumbo">
+        <h1>Formando Campeones</h1>
+      </div>
+      <div id="right-jumbo">
+        <%= image_tag "castor.gif",  size: "100x70" %>
+      </div>
+    </div>
+    <h2>
+      Administración de
+      <strong>Deportes</strong>
+    </h2>
 
   <%= link_to "Solicitar acceso", acceso_path, class: "btn btn-lg btn-primary" %>
 
 </div>
+<% end %>
