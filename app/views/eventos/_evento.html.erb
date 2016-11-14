@@ -2,7 +2,7 @@
   <td class="eve-fecha"><%= evento.fecha.to_date %></td>
   <td class="eve-tipo"><%= evento.tipo %></td>
   <td class="eve-equipo"><%= Equipo.find_by(id: evento.equipo_id).name %></td>
-  <td class="eve-comment"><%= equipo.comment %></td>
+  <td class="eve-comment"><%= evento.comment %></td>
   <td><%= link_to '', edit_evento_path(evento), class: "glyphicon glyphicon-edit" %></td>
   <td><%= link_to '', evento, class: "glyphicon glyphicon-trash", method: :delete,
                       data: { confirm: '¿Es correcta la opción de borrar el evento?' } %></td>
