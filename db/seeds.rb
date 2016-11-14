@@ -25,8 +25,9 @@ User.create!(name:                   "Fernando Flores",
                activated_at:          Time.zone.now)
 end
 
-8.times do
-  nombre = Faker::Lorem.word
+conadeipNom = ['Infantil Menor', 'Infantil Mayor', 'Juvenil A', 'Juvenil B', 'Juvenil C', 'Primera Fuerza']
+conadeipNom.each do |cate|
+  nombre = cate
   limiteIn = Date.today.strftime("%d/%m/%Y")
   limiteSu = Date.today.strftime("%d/%m/%Y")
   Categoria.create!(nombre: nombre, limInferior: limiteIn, limSuperior: limiteSu)

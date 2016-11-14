@@ -18,4 +18,6 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'Equipo', 'equipos'
   inflect.irregular 'Jugador', 'jugadores'
   inflect.irregular 'Categoria', 'categorias'
+  inflect.irregular 'Evento', 'eventos'
+  inflect.irregular 'Asistencia', 'asistencias'
 end
