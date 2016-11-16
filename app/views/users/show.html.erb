@@ -10,12 +10,11 @@
       Equipos:
       <ul>
         <% @user.equipos.each do |e| %>
-          <li><%= link_to e.name, '#' %></li>
+          <li><%= link_to e.name, e %></li>
         <% end %>
       </ul>
+      (haga click para ver detalles del equipo)
     </section>
   </aside>
-  <div class="col-sm-8">
-    <%= yield %>
-  </div>
+
 </div>

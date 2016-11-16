@@ -3,4 +3,5 @@ class Equipo < ApplicationRecord
   has_many :players
   has_many :eventos, dependent: :destroy
   validates :user_id, :name, presence: true
+
 end

@@ -1,5 +1,6 @@
 class EquiposController < ApplicationController
-  before_action :set_equipo,    only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :create, :destroy]
+  before_action :set_equipo,    only: [:show, :edit, :update, :destroy, :eventos_feed]
   before_action :set_deportes,  only: [:new, :edit, :create]
   before_action :set_categorias, only: [:new, :show, :edit, :update, :create]
   before_action :set_ramas,      only: [:new, :show, :edit, :update, :create]
@@ -59,6 +60,11 @@ class EquiposController < ApplicationController
     @equipo.destroy
     flash[:success] = 'Se eliminó correctamente el equipo.'
     redirect_to equipos_url
+  end
+
+  # GET /equipos/1/eventos_feed
+  def eventos_feed
+    @feed_eventos = @equipo.eventos
   end
 
   private

@@ -1,0 +1,29 @@
+<h3>Registro de asistencias</h3>
+<table>
+  <thead>
+    <th colspan="4">
+      <%= @evento.tipo %> <%= @evento.fecha %> <%= @vento.commnet %>
+    </th>
+    <tr>
+      <th>Alumno</th>
+      <th>Asistencia</th>
+      <th>Comentarios</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @equipo.players.each do |plyr| %>
+      <% # TERMINAR %>
+      <% puts "**********************************" %>
+      <% puts "**  Player ID:    #{plyr.id}  " %>
+      <% puts "**********************************" %>
+      <tr id="player-<%= plyr.id %>">
+        <td class="eve-accion"><%= link_to '', eventoPlayers_path(evento.id),
+                          class: "glyphicon glyphicon-off", data: { equipo: @equipo } %></td>
+        <td class="eve-fecha"><%= evento.fecha.to_date %></td>
+        <td class="eve-tipo"><%= evento.tipo %></td>
+        <td class="eve-comment"><%= evento.comment %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

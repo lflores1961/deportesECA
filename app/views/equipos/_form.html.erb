@@ -1,15 +1,6 @@
 <div class="bg-2">
   <%= form_for(@equipo) do |f| %>
-    <% if @equipo.errors.any? %>
-      <div id="error_explanation">
-        <h4><%= pluralize(@equipo.errors.count, "errores") %> impidieron que el equipo se guarde:</h4>
-        <ul>
-          <% @equipo.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <%= render 'shared/error_messages', object: f.object %>
 
     <div class="field-tm">
       <%= f.label :name, "Equipo" %>

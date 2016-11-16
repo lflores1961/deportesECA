@@ -4,6 +4,7 @@
 Equipos:
 <ul>
   <% current_user.equipos.each do |equipo| %>
-    <li><%= link_to equipo.name, '#' %></li>
+    <li><%= link_to equipo.name, eventosFeed_path(equipo.id) %></li>
     <% end %>
 </ul>
+(Haga click para ver eventos del equipo)

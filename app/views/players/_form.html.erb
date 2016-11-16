@@ -1,22 +1,13 @@
 <div class="bg-2">
   <%= form_for(@player) do |f| %>
-    <% if @player.errors.any? %>
-      <div id="error_explanation">
-        <h4><%= pluralize(@player.errors.count, "errores") %> impidieron que el jugador se guarde:</h4>
-        <ul>
-          <% @player.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <%= render 'shared/error_messages', object: f.object %>
 
     <div class="field-tm">
-      <%= f.label :apellidoPaterno %>
+      <%= f.label :apellidoPaterno, "Apellido Paterno" %>
       <%= f.text_field :apellidoPaterno %>
     </div>
     <div class="field-tm">
-      <%= f.label :apellidoMaterno %>
+      <%= f.label :apellidoMaterno, "Apellido Materno" %>
       <%= f.text_field :apellidoMaterno %>
     </div>
     <div class="field-tm">
@@ -24,15 +15,16 @@
       <%= f.text_field :nombres %>
     </div>
     <div class="field-tm">
-      <%= f.label :fechaNacimiento %>
-      <%= f.text_field :fechaNacimiento %>
+      <%= f.label :fechaNacimiento, "Fecha de nacimiento" %>
+      <%= f.date_select :fechaNacimiento, start_year: 1996, use_two_digit_numbers: true,
+                        prompt: { day: 'Día', month: 'Mes', year: 'Año' } %>
     </div>
     <div class="field-tm">
       <%= f.label :equipo %>
-      <%= f.collection_select( :equipo_id, @equipos, :id, :name, :placeholder => "Equipo") %>
+      <%= f.collection_select(:equipo_id, @equipos, :id, :name, :placeholder => "Equipo") %>
     </div>
     <div class="field-tm">
-      <%= f.label :seccion %>
+      <%= f.label :seccion, "Sección" %>
       <%= f.select :seccion, @secciones, :placeholder => "Sección" %>
     </div>
     <div class="field-tm">

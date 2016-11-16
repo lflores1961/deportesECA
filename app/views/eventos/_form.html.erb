@@ -1,15 +1,6 @@
 <div class="bg-2">
   <%= form_for(@evento) do |f| %>
-    <% if @evento.errors.any? %>
-      <div id="error_explanation">
-        <h4><%= pluralize(@evento.errors.count, "errores") %> impidieron que el evento se guarde:</h4>
-        <ul>
-          <% @evento.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <%= render 'shared/error_messages', object: f.object %>
 
     <div class="field-tm">
       <%= f.label :fecha %>

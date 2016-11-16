@@ -1,5 +1,8 @@
 <% provide(:title, "Equipos") %>
 <div class="container-fluid bg-2">
+  <section class="col-sm-8">
+
+
   <p id="notice">
     <%= notice %>
   </p>
@@ -30,4 +33,5 @@
     <%= link_to '', @equipo, class: "glyphicon glyphicon-trash", method: :delete,
         data: { confirm: '¿Está seguro?' } %>
   <% end %>
+  </section>
 </div>

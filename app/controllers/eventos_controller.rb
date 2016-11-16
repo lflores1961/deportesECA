@@ -1,7 +1,8 @@
 class EventosController < ApplicationController
+  before_action :logged_in_user,  only: [:index, :edit, :update, :create, :destroy]
   before_action :set_evento,      only: [:show, :edit, :update, :destroy]
-  before_action :set_equipos,     only: [:show, :new, :edit]
-  before_action :set_tipoEvento,  only: [:new, :edit]
+  before_action :set_equipos,     only: [:show, :new, :edit, :create]
+  before_action :set_tipoEvento,  only: [:new, :edit, :create]
 
   # GET /eventos
   def index
@@ -31,6 +32,14 @@ class EventosController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  # GET /eventos/:id/players as: :ePlayers
+  def evento_players
+    @evento = Evento.find(params[:id])
+    @equipo = params[data[:equipo]]
+    @tipoAsistencia = ['asistió', 'permiso', 'médico', 'falta']
+
   end
 
   # PATCH/PUT /eventos/1

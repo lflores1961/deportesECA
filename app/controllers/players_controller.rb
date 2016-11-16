@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+before_action :logged_in_user, only: [:index, :edit, :update, :create, :destroy]
 before_action :set_player,    only: [:show, :edit, :update, :destroy]
 before_action :set_secciones, only: [:new, :edit, :update, :create]
 before_action :set_generos,   only: [:new, :edit, :update, :create]
