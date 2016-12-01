@@ -1,46 +1,37 @@
 <h3>Registro de asistencias</h3>
 <h4>Equipo: <%= @equipo.name %></h4>
-<table>
-  <thead>
-    <th colspan="4">
-      <%= @evento.tipo %> <%= @evento.fecha %> <%= @evento.comment %>
-    </th>
-    <tr>
-      <th>Alumno</th>
-      <th>Asistencia</th>
-      <th>Comentarios</th>
-      <th>Registrar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% cont = 1 %>
-      <% @equipo.players.each do |plyr| %>
-        <% # TERMINAR %>
-        <% puts "**********************************" %>
-        <% puts "**  Counter:    #{cont}  " %>
-        <% puts "**  Equipo ID:    #{@equipo.id}  " %>
-        <% puts "**  Player ID:    #{plyr.id}  " %>
-        <% p "**  Attend: #{@attend}" %>
-        <% puts "**  Attend class: #{@attend[cont].class}" %>
-        <% puts "**  Attend: #{@attend[cont]}" %>
-        <% p params %>
-        <% puts "**********************************" %>
+<%= form_for @evento do |f| %>
+  <table>
+    <thead>
+      <th colspan="4">
+        <%= @evento.tipoEvento %> <%= @evento.fecha %> <%= @evento.comment %>
+      </th>
+      <tr>
+        <th>Alumno</th>
+        <th>Asistencia</th>
+        <th>Comentarios</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for :asistencias do |asis| %>
+          <tr>
+            <% jugador = @jugadores.find_by(id:asis.object.player_id) %>
 
-        <tr id="player-<%= plyr.id %>">
-        <% form_for @attend[cont] do |f| %>
-          <% @attend[cont].player_id = plyr.id %>
-          <td class="plyr-apellidoPat"><%= plyr.apellidoPaterno + " " + plyr.nombres %></td>
-          <td>
-            <% @tipoAsistencia.each do |type| %>
-              <%= f.radio_button( :tipo, type ) %> |
-            <% end %>
-          </td>
-          <td><%= f.text_field :comment %></td>
-          <td class="eve-accion"><%= f.submit '',
-                          class: "glyphicon glyphicon-check"  %></td>
-        <% end %>
-        </tr>
-        <% cont += 1 %>
-    <% end %>
-  </tbody>
-</table>
+            <td><%= jugador.apellidoPaterno %></td>
+            <td>
+              <% @tiposAsistencia.each do |tipe| %>
+                <%= asis.label :tipo, tipe %>
+                <%= asis.radio_button( :tipo, tipe ) %>
+              <% end %>
+            </td>
+            <td><%= asis.text_field :comment %></td>
+            <% asis.hidden_field :player_id, value: asis.object.player_id %>
+
+          </tr>
+      <% end %>
+      <% f.hidden_field :tipoEvento, value: @evento.tipoEvento %>
+      <tr><td colspan="3"><%= f.submit 'Registrar', class: "btn btn-default", style: "width: 20em;"  %></td></tr>
+    </tbody>
+  </table>
+
+<% end %>

@@ -14,7 +14,7 @@ class AsistenciasController < ApplicationController
   end
 
   private
-
+  
     def asistencia_params
       params.require(:asistencia).permit(:evento_id, :player_id, :tipo, :comment)
     end

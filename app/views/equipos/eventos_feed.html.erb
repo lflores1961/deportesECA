@@ -28,7 +28,7 @@
             <td class="eve-accion"><%= link_to '', eventoPlayers_path(evento.id),
                               class: "glyphicon glyphicon-off", data: { equipo: @equipo } %></td>
             <td class="eve-fecha"><%= evento.fecha.to_date %></td>
-            <td class="eve-tipo"><%= evento.tipo %></td>
+            <td class="eve-tipo"><%= evento.tipoEvento %></td>
             <td class="eve-comment"><%= evento.comment %></td>
           </tr>
         <% end %>

@@ -7,8 +7,8 @@
       <%= f.date_field :fecha, :placeholder => "Fecha del evento" %>
     </div>
     <div class="field-tm">
-      <%= f.label :tipo %>
-      <%= f.select :tipo, @tipoEvento, :placeholder => "Entrenamiento o Juego" %>
+      <%= f.label :tipoEvento %>
+      <%= f.select :tipoEvento, @tiposEvento, :placeholder => "Entrenamiento o Juego" %>
     </div>
     <div class="field-tm">
       <%= f.label :equipo_id %>

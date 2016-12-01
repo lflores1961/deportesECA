@@ -5,5 +5,5 @@ class Evento < ApplicationRecord
   # has_many :players, through: :asistencias
   has_many :players, through: :equipo
   accepts_nested_attributes_for :players
-  validates :equipo_id, :fecha, :tipo, presence: true
+  validates :equipo_id, :fecha, :tipoEvento, presence: true
 end

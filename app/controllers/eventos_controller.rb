@@ -1,8 +1,8 @@
 class EventosController < ApplicationController
   before_action :logged_in_user,  only: [:index, :edit, :update, :create, :destroy]
   before_action :set_evento,      only: [:show, :edit, :update, :destroy]
-  before_action :set_equipos,     only: [:show, :new, :edit, :create]
-  before_action :set_tipoEvento,  only: [:new, :edit, :create]
+  before_action :set_equipos,     only: [:show, :new, :edit, :create, :update]
+  before_action :set_tiposEvento,  only: [:new, :edit, :create, :update, :evento_players]
 
   # GET /eventos
   def index
@@ -36,12 +36,13 @@ class EventosController < ApplicationController
 
   # GET /eventos/:id/players as: :eventoPlayers
   def evento_players
-    @attend = []
+    # @attend = []
     @evento = Evento.find(params[:id])
     @equipo = Equipo.find(@evento.equipo_id)
     @jugadores = @equipo.players
-    @tipoAsistencia = ['asistió', 'falta', 'retardo', 'médico']
-    @jugadores.each { |n| @attend << @evento.asistencias.build(player_id:n.id) }
+    @tiposAsistencia = ['asistió', 'falta', 'retardo', 'médico']
+    # @jugadores.each { |n| @attend << @evento.asistencias.build(player_id:n.id) }
+    @jugadores.each { |n| @evento.asistencias << Asistencia.new(evento_id:@evento.id, player_id:n.id) }
 
   end
 
@@ -75,12 +76,12 @@ class EventosController < ApplicationController
       @equipos = Equipo.all
     end
 
-    def set_tipoEvento
-      @tipoEvento = ['Entrenamiento', 'Juego']
+    def set_tiposEvento
+      @tiposEvento = ['Entrenamiento', 'Juego']
     end
 
     # Never trust big bad internet, always use strong params
     def evento_params
-      params.require(:evento).permit(:fecha, :tipo, :equipo_id, :comment)
+      params.require(:evento).permit(:fecha, :tipoEvento, :equipo_id, :comment, :asistencias_attributes => [:evento_id, :player_id, :tipo, :comment])
     end
 end
