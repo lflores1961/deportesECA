@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
@@ -18,4 +17,8 @@ Rails.application.routes.draw do
   resources :eventos
   get '/equipos/:id/eventos_feed' => 'equipos#eventos_feed', as: 'eventosFeed'
   get '/eventos/:id/players_feed' => 'eventos#evento_players', as: 'eventoPlayers'
+  # asistencias#new not required because Asistencia.new is called at
+  # eventos#evento_players
+  # get '/asistencias/new', to: 'asistencias#new'
+  post '/asistencias', to: 'asistencias#create'
 end

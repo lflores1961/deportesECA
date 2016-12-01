@@ -34,11 +34,14 @@ class EventosController < ApplicationController
     end
   end
 
-  # GET /eventos/:id/players as: :ePlayers
+  # GET /eventos/:id/players as: :eventoPlayers
   def evento_players
+    @attend = []
     @evento = Evento.find(params[:id])
-    @equipo = params[data[:equipo]]
-    @tipoAsistencia = ['asistió', 'permiso', 'médico', 'falta']
+    @equipo = Equipo.find(@evento.equipo_id)
+    @jugadores = @equipo.players
+    @tipoAsistencia = ['asistió', 'falta', 'retardo', 'médico']
+    @jugadores.each { |n| @attend << @evento.asistencias.build(player_id:n.id) }
 
   end
 
