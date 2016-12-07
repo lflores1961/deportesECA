@@ -36,13 +36,13 @@ class EventosController < ApplicationController
 
   # GET /eventos/:id/players as: :eventoPlayers
   def evento_players
-    # @attend = []
     @evento = Evento.find(params[:id])
     @equipo = Equipo.find(@evento.equipo_id)
     @jugadores = @equipo.players
+    p @jugadores
     @tiposAsistencia = ['asistió', 'falta', 'retardo', 'médico']
-    # @jugadores.each { |n| @attend << @evento.asistencias.build(player_id:n.id) }
-    @jugadores.each { |n| @evento.asistencias << Asistencia.new(evento_id:@evento.id, player_id:n.id) }
+
+    @jugadores.each { |n| @evento.asistencias.build(player_id:n.id) }
 
   end
 
@@ -51,7 +51,7 @@ class EventosController < ApplicationController
 
     if @evento.update(evento_params)
       flash[:success] = "Se actualizó exitosamente el evento."
-      redirect_to eventos_path
+      redirect_to root_path
     else
       render 'edit'
     end

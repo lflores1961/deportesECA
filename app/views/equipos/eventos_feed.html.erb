@@ -21,12 +21,15 @@
       <tbody>
 
         <% @feed_eventos.each do |evento| %>
+
           <% puts "**********************************" %>
           <% puts "**  Evento ID:    #{evento.id}  " %>
           <% puts "**********************************" %>
           <tr id="evento-<%= evento.id %>">
+            <% # if !evento.done?  done es un campo boleano que hay que incluir. %>
             <td class="eve-accion"><%= link_to '', eventoPlayers_path(evento.id),
                               class: "glyphicon glyphicon-off", data: { equipo: @equipo } %></td>
+            <% # else link_to show evento + evento.asistencias %>
             <td class="eve-fecha"><%= evento.fecha.to_date %></td>
             <td class="eve-tipo"><%= evento.tipoEvento %></td>
             <td class="eve-comment"><%= evento.comment %></td>

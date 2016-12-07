@@ -1,37 +1,55 @@
-<h3>Registro de asistencias</h3>
-<h4>Equipo: <%= @equipo.name %></h4>
-<%= form_for @evento do |f| %>
-  <table>
-    <thead>
-      <th colspan="4">
-        <%= @evento.tipoEvento %> <%= @evento.fecha %> <%= @evento.comment %>
-      </th>
-      <tr>
-        <th>Alumno</th>
-        <th>Asistencia</th>
-        <th>Comentarios</th>
-      </tr>
-    </thead>
-    <tbody>
+
+<div class="container">
+  <h3>Registro de asistencias</h3>
+  <h4>Equipo: <%= @equipo.name %></h4>
+  <%= form_for @evento do |f| %>
+
+    <div>
+      <%= @evento.tipoEvento %> <%= @evento.fecha %> <%= @evento.comment %>
+    </div><br>
+    <div class="row encabezado-asis">
+      <p class="col-sm-4">Alumno</p>
+      <p class="col-sm-4">Asistencia</p>
+      <p class="col-sm-4">Comentarios</p>
+    </div>
+
+    <div class="container">
+
       <%= f.fields_for :asistencias do |asis| %>
-          <tr>
+        <div class="row reng-asis">
+
+          <div class="col-sm-4">
             <% jugador = @jugadores.find_by(id:asis.object.player_id) %>
 
-            <td><%= jugador.apellidoPaterno %></td>
-            <td>
-              <% @tiposAsistencia.each do |tipe| %>
-                <%= asis.label :tipo, tipe %>
-                <%= asis.radio_button( :tipo, tipe ) %>
-              <% end %>
-            </td>
-            <td><%= asis.text_field :comment %></td>
-            <% asis.hidden_field :player_id, value: asis.object.player_id %>
+            <% puts "****************************" %>
+            <% p jugador %>
+            <% p asis.object %>
+            <% puts "****************************" %>
+            <%= jugador.apellidoPaterno %>
+						<%= asis.hidden_field :player_id, :value => jugador.id %>
+          </div>
 
-          </tr>
+          <div class="col-sm-4">
+            <% @tiposAsistencia.each do |tipe| %>
+              <div class="radio">
+                <span><%= asis.radio_button( :tipo, tipe ) %><%= asis.label :tipo, tipe %></span>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="col-sm-4">
+            <%= asis.text_field :comment %>
+          </div>
+        </div>
       <% end %>
-      <% f.hidden_field :tipoEvento, value: @evento.tipoEvento %>
-      <tr><td colspan="3"><%= f.submit 'Registrar', class: "btn btn-default", style: "width: 20em;"  %></td></tr>
-    </tbody>
-  </table>
+      <br>
+      <div class="row">
+      <% puts "============================" %>
+      <% puts @evento.asistencias %>
+      <% puts "============================" %>
+      <%= f.submit 'Registrar', class: "btn btn-default", style: "width: 20em; align: center;"  %>
+      </div>
+    </div>
 
-<% end %>
+  <% end %>
+</div>

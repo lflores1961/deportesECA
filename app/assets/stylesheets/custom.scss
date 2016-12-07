@@ -110,6 +110,16 @@ p {
   padding-left: 20px;
 }
 
+.encabezado-asis {
+	border-top: 1px solid $gray-medium-light;
+	border-bottom: 1px solid $gray-medium-light;
+}
+
+.reng-asis {
+	display: block;
+	border-bottom: 1px solid $gray-medium-light;
+}
+
 /* footer */
 
 footer {
