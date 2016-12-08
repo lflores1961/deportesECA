@@ -11,6 +11,10 @@ class EventosController < ApplicationController
 
   # GET /eventos/1
   def show
+		@user = current_user
+    @equipo = @evento.equipo
+    @jugadores = @equipo.players
+    # @asistencias = @evento.asistencias
   end
 
   # GET /eventos/new
@@ -82,6 +86,6 @@ class EventosController < ApplicationController
 
     # Never trust big bad internet, always use strong params
     def evento_params
-      params.require(:evento).permit(:fecha, :tipoEvento, :equipo_id, :comment, :asistencias_attributes => [:evento_id, :player_id, :tipo, :comment])
+      params.require(:evento).permit(:fecha, :tipoEvento, :equipo_id, :comment, :registrado, :asistencias_attributes => [:evento_id, :player_id, :tipo, :comment])
     end
 end

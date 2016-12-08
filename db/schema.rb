@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201171521) do
+ActiveRecord::Schema.define(version: 20161207212306) do
 
   create_table "asistencias", force: :cascade do |t|
     t.integer  "evento_id"
@@ -47,8 +47,9 @@ ActiveRecord::Schema.define(version: 20161201171521) do
     t.string   "tipoEvento"
     t.integer  "equipo_id"
     t.string   "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "registrado", default: false
     t.index ["equipo_id", "fecha"], name: "index_eventos_on_equipo_id_and_fecha"
     t.index ["equipo_id"], name: "index_eventos_on_equipo_id"
   end

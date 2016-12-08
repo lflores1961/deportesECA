@@ -16,6 +16,7 @@ class EquiposController < ApplicationController
   def show
     @entrenador = User.find(@equipo.user_id)
     @categoria = Categoria.find(@equipo.categoria)
+    @players = @equipo.players
   end
 
   # GET /equipos/new

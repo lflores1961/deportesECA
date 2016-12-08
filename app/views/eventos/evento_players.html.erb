@@ -47,6 +47,7 @@
       <% puts "============================" %>
       <% puts @evento.asistencias %>
       <% puts "============================" %>
+      <%= f.hidden_field :registrado, :value => true %>
       <%= f.submit 'Registrar', class: "btn btn-default", style: "width: 20em; align: center;"  %>
       </div>
     </div>
