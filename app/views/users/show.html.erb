@@ -7,13 +7,16 @@
         <%= @user.name %>
       </h1>
       <%= @user.email %>
-      Equipos:
-      <ul>
-        <% @user.equipos.each do |e| %>
-          <li><%= link_to e.name, e %></li>
-        <% end %>
-      </ul>
-      (haga click para ver detalles del equipo)
+      <div>
+        <p>Equipos:</p>
+        <ul>
+          <% @user.equipos.each do |e| %>
+            <li><%= link_to e.name, e %></li>
+          <% end %>
+        </ul>
+        (haga click para ver detalles del equipo)
+      </div>
+
     </section>
   </aside>
 

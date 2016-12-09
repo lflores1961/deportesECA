@@ -1,18 +1,18 @@
-<div class="bg-2">
+<div class="col-sm-6 col-sm-offset-3">
   <%= form_for(@player) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
     <div class="field-tm">
       <%= f.label :apellidoPaterno, "Apellido Paterno" %>
-      <%= f.text_field :apellidoPaterno %>
+      <%= f.text_field :apellidoPaterno, class: 'form-control' %>
     </div>
     <div class="field-tm">
       <%= f.label :apellidoMaterno, "Apellido Materno" %>
-      <%= f.text_field :apellidoMaterno %>
+      <%= f.text_field :apellidoMaterno, class: 'form-control' %>
     </div>
     <div class="field-tm">
       <%= f.label :nombres %>
-      <%= f.text_field :nombres %>
+      <%= f.text_field :nombres, class: 'form-control' %>
     </div>
     <div class="field-tm">
       <%= f.label :fechaNacimiento, "Fecha de nacimiento" %>
@@ -29,7 +29,7 @@
     </div>
     <div class="field-tm">
       <%= f.label :grupo %>
-      <%= f.text_field :grupo %>
+      <%= f.text_field :grupo, class: 'form-control' %>
     </div>
     <div class="field-tm">
       <%= f.label :genero %>

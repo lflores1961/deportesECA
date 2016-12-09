@@ -1,10 +1,10 @@
-<div class="bg-2">
+<div class="col-sm-6 col-sm-offset-3">
   <%= form_for(@categoria) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
     <div class="field-tm">
       <%= f.label :nombre, "Categoría" %>
-      <%= f.text_field :nombre, :placeholder => "Nombre de la categoría" %>
+      <%= f.text_field :nombre, :placeholder => "Nombre de la categoría", class: 'form-control' %>
     </div>
 
     <div class="field-tm">

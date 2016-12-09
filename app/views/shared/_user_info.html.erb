@@ -1,10 +1,12 @@
 <%= link_to gravatar_for(current_user, size: 60), current_user  %>
 <h1><%= current_user.name %></h1>
 <%= current_user.email %>
-Equipos:
-<ul>
-  <% current_user.equipos.each do |equipo| %>
-    <li><%= link_to equipo.name, eventosFeed_path(equipo.id) %></li>
-    <% end %>
-</ul>
-(Haga click para ver eventos del equipo)
+<div>
+  <p>Equipos:</p>
+  <ul>
+    <% current_user.equipos.each do |equipo| %>
+      <li><%= link_to equipo.name, eventosFeed_path(equipo.id) %></li>
+      <% end %>
+  </ul>
+  (Haga click para ver eventos del equipo)
+</div>
