@@ -13,9 +13,13 @@
         <% @jugadores.each do |player| %>
           <tr>
             <td style="text-align: left;"><%= player.apellidoPaterno %></td>
-            <% asist = @evento.asistencias.find_by(player_id:player.id) %>
-            <td><%= asist.tipo %></td>
-            <td><%= asist.comment %></td>
+            <% if asist = @evento.asistencias.find_by(player_id:player.id) %>
+              <td><%= asist.tipo %></td>
+              <td><%= asist.comment %></td>
+            <% else %>
+              <td colspan="3">Nuevo Ingreso</td>
+            <% end %>
+
           </tr>
         <% end %>
       </tbody>
