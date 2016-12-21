@@ -8,7 +8,7 @@ class EventosControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect create when not logged in" do
     assert_no_difference 'Evento.count' do
-      post eventos_path, params: { evento: { fecha:@evento.fecha, tipo:@evento.tipo,
+      post eventos_path, params: { evento: { fecha:@evento.fecha, tipoEvento:@evento.tipoEvento,
                                     equipo:@evento.equipo_id, comment:@evento.comment } }
     end
     assert_redirected_to login_url

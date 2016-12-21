@@ -2,18 +2,18 @@
 
 uno:
   evento: entrene
-  player: armenta
+  player_id: armenta
   tipo: asistencia
   comment: Normal
 
 dos:
   evento: juego
-  player: beas
+  player_id: beas
   tipo: permiso
   comment: Cita con el Medico
 
 tres:
   evento: entrene
-  player: zama
+  player_id: zama
   tipo: asistencia
   comment: Normal

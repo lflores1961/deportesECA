@@ -4,7 +4,7 @@ class EventoTest < ActiveSupport::TestCase
 
   def setup
     @equipo = equipos(:osos)
-    @evento = @equipo.eventos.build(fecha:'2016-11-09', tipo:'Entrenamiento', comment:'Local')
+    @evento = @equipo.eventos.build(fecha:'2016-11-09', tipoEvento:'Entrenamiento', comment:'Local')
   end
 
   test "should be valid" do
@@ -22,7 +22,7 @@ class EventoTest < ActiveSupport::TestCase
   end
 
   test "tipo must be present" do
-    @evento.tipo = nil
+    @evento.tipoEvento = nil
     assert_not @evento.valid?
   end
 end

@@ -2,12 +2,12 @@
 
 entrene:
   fecha: 2016-11-09
-  tipo: Entrenamiento
+  tipoEvento: Entrenamiento
   equipo: osos
   comment: Local
 
 juego:
   fecha: 2016-11-13
-  tipo: Juego
+  tipoEvento: Juego
   equipo: osos
   comment: vsRaptors
