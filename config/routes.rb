@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :categorias
   resources :equipos
   resources :players
+  get '/eventos/calendario' => 'eventos#calendario', as: 'calendario'
   resources :eventos
   get '/equipos/:id/eventos_feed' => 'equipos#eventos_feed', as: 'eventosFeed'
   get '/eventos/:id/players_feed' => 'eventos#evento_players', as: 'eventoPlayers'

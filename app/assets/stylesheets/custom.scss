@@ -253,6 +253,45 @@ input {
   }
 }
 
+.simple-calendar {
+  .day {
+    font-size: 8px;
+    text-align: left;
+    vertical-align: top;
+    .evento {
+      font-size: 10px;
+    }
+  }
+
+  td {
+    height: 100px;
+    width: 200px;
+    font-size: 10px;
+  }
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {
+    color: green;
+    background-color:hsl(120,70%,90%);
+  }
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {}
+}
 /* Miscelaneous */
 
 .debug_dump {

@@ -9,6 +9,12 @@ class EventosController < ApplicationController
     @eventos = Evento.paginate(page: params[:page])
   end
 
+  # GET /eventos/calendario
+  def calendario
+    @user = current_user
+    @eventos = Evento.all
+  end
+
   # GET /eventos/1
   def show
 		@user = current_user

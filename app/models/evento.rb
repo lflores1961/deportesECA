@@ -7,4 +7,8 @@ class Evento < ApplicationRecord
   # has_many :players, through: :equipo
   # accepts_nested_attributes_for :players
   validates :equipo_id, :fecha, :tipoEvento, presence: true
+
+  def start_time
+    self.fecha
+  end
 end

@@ -12,6 +12,8 @@ gem 'will_paginate',               '3.1.0'
 gem 'bootstrap-will_paginate',     '0.0.10'
 # Use Bootstrap-sass for responsive site
 gem 'bootstrap-sass',              '3.3.6'
+# use simple calendar github.com/excid3/simple_calendar
+gem 'simple_calendar',             '2.0'
 # Use Puma as the app server
 gem 'puma',                        '3.4.0'
 # Use SCSS for stylesheets
