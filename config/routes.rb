@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   # eventos#evento_players
   # get '/asistencias/new', to: 'asistencias#new'
   post '/asistencias', to: 'asistencias#create'
+  get '/validar/:equipo_id', to: 'players#validar'
 end

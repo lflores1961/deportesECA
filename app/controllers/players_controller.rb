@@ -56,8 +56,19 @@ before_action :set_generos,   only: [:new, :edit, :update, :create]
   # DELETE /players/1.json
   def destroy
     @player.destroy
-    flash[:success] = 'Se eliminó correctamente el equipo.'
+    flash[:success] = 'Se eliminó correctamente el jugador.'
     redirect_to players_url
+  end
+
+  # GET /validar/:equipo_id
+  def validar
+    equipo = Equipo.find(params[:equipo_id])
+    categoria = Categoria.find(equipo.categoria)
+
+    respond_to do |format|
+      format.json { render json: { limiteInferior: categoria.limInferior,
+                                    limiteSuperior: categoria.limSuperior } }
+    end
   end
 
   private

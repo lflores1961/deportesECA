@@ -16,12 +16,11 @@
     </div>
     <div class="field-tm">
       <%= f.label :fechaNacimiento, "Fecha de nacimiento" %>
-      <%= f.date_select :fechaNacimiento, start_year: 1996, use_two_digit_numbers: true,
-                        prompt: { day: 'Día', month: 'Mes', year: 'Año' } %>
+      <%= f.date_field :fechaNacimiento, min: "1996-01-01" %>
     </div>
     <div class="field-tm">
       <%= f.label :equipo %>
-      <%= f.collection_select(:equipo_id, @equipos, :id, :name, :placeholder => "Equipo") %>
+      <%= f.collection_select(:equipo_id, @equipos, :id, :name, prompt: "seleccione un equipo") %>
     </div>
     <div class="field-tm">
       <%= f.label :seccion, "Sección" %>
