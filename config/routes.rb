@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :categorias
+  get '/equipos/forma_rep'
+  post '/equipos/reporte_asist', to: 'equipos#reporte_asist', as: 'reporte_asist'
   resources :equipos
   resources :players
   get '/eventos/calendario' => 'eventos#calendario', as: 'calendario'

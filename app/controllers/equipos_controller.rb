@@ -68,7 +68,53 @@ class EquiposController < ApplicationController
     @feed_eventos = @equipo.eventos
   end
 
+  # GET /equipos/forma_rep
+  def forma_rep
+    @equipo = Equipo.new
+    @entrenadores = User.all
+  end
+
+  # PUT /equipos/reporte_asist
+  def reporte_asist
+
+    if params[:entrenador]
+      @entrenador = User.find(params[:entrenador].to_i)
+      inicio = Time.parse(params[:inicio])
+      final = Time.parse(params[:final])
+      @equipos = @entrenador.equipos
+      @eventos = reporte(@entrenador.id, inicio, final)
+    else
+      @entrenador = current_user
+      @equipos = @entrenador.equipos
+      @equipos.each do |equi|
+        @eventos << equi.eventos
+      end
+    end
+
+    respond_to do |format|
+      format.html
+      format.xls
+    end
+
+  end
+
   private
+
+  # Find correct set of eventos for user's teams
+  def reporte entrena, inicio, final
+    entrenador = User.find(entrena)
+    equipos = entrenador.equipos
+
+    equipos.each do |equipo|
+      @events = []
+      equipo.eventos.each do |event|
+            if (event.fecha >= inicio) && (event.fecha <= final)
+              @events << event
+            end
+      end
+    end
+    return @events
+  end
 
   # Set @deportes to select from in form.
   def set_deportes

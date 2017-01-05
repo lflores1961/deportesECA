@@ -30,11 +30,8 @@
           </div>
 
           <div class="col-sm-4">
-            <% @tiposAsistencia.each do |tipe| %>
-              <div class="radio">
-                <span><%= asis.radio_button( :tipo, tipe ) %><%= asis.label :tipo, tipe %></span>
-              </div>
-            <% end %>
+
+            <%= asis.select(:tipo, @tiposAsistencia) %>
           </div>
 
           <div class="col-sm-4">

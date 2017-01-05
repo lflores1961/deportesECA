@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Asistencias">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Entrenador:</Data></Cell>
+        <Cell><Data ss:Type="String"><%= @entrenador.name %></Data></Cell>
+      </Row>
+  <% @equipos.each do |equipo| %>
+      <Row>
+        <Cell><Data ss:Type="String">Equipo:</Data></Cell>
+        <Cell><Data ss:Type="String"><%= equipo.name %></Data></Cell>
+      </Row>
+    <% @eventos.each do |even| %>
+      <% if even.equipo_id == equipo.id %>
+      <Row>
+        <Cell><Data ss:Type="String">Evento:</Data></Cell>
+        <Cell><Data ss:Type="String"><%= even.tipoEvento %></Data></Cell>
+        <Cell><Data ss:Type="Date"><%= even.fecha %></Data></Cell>
+      </Row>
+        <% even.asistencias.each do |asist| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= asist.player.apellidoPaterno %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= asist.player.apellidoMaterno %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= asist.player.nombres %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= asist.tipo %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= asist.comment %></Data></Cell>
+      </Row>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

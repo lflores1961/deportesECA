@@ -1,0 +1,40 @@
+<% provide(:title, "Reporte Asistencias") %>
+<div class="bg-2 container-fluid">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Reporte de Asistencias</h1>
+
+  <table class="col-sm-6 col-sm-offset-3">
+    <thead>
+      <tr class="repor_entrena">
+        <th>Entrenador:</th>
+        <th colspan="2"><%= @entrenador.name %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @equipos.each do |equipo| %>
+        <tr class="repor_equipo">
+          <th>Equipo:</th>
+          <th colspan="2"><%= equipo.name %></th>
+        </tr>
+        <% @eventos.each do |even| %>
+          <% if even.equipo_id == equipo.id %>
+            <tr class="repor_evento">
+              <th>Evento:</th>
+              <th><%= even.tipoEvento %></th>
+              <th>(<%= even.fecha %>)</th>
+            </tr>
+            <% even.asistencias.each do |asist| %>
+              <tr>
+                <td style="text-align:left;"><%= asist.player.apellidoPaterno %> <%= asist.player.apellidoMaterno %>, <%= asist.player.nombres %> </td>
+                <td><%= asist.tipo %></td>
+                <td><%= asist.comment %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </tbody>
+
+  </table>
+</div>
