@@ -8,6 +8,12 @@ before_action :set_generos,   only: [:new, :edit, :update, :create]
   # GET /players.json
   def index
     @players = Player.paginate(page: params[:page])
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @players.to_csv }
+      format.xls
+    end
   end
 
   # GET /players/new

@@ -8,7 +8,20 @@ class Evento < ApplicationRecord
   # accepts_nested_attributes_for :players
   validates :equipo_id, :fecha, :tipoEvento, presence: true
 
+  # set alias for simple calendar format
   def start_time
     self.fecha
   end
+
+  # Convert column data to comma separated values
+  def self.to_csv(options = {})
+    desired_columns = ["fecha", "tipoEvento", "equipo_id", "comment", "registrado"]
+    CSV.generate(options) do |csv|
+      csv << desired_columns
+      all.each do |evento|
+        csv << evento.attributes.values_at(*desired_columns)
+      end
+    end
+  end
+  
 end

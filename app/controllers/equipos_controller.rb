@@ -9,6 +9,12 @@ class EquiposController < ApplicationController
   # GET /equipos.json
   def index
     @equipos = Equipo.paginate(page: params[:page])
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @equipos.to_csv }
+      format.xls
+    end
   end
 
   # GET /equipos/1
@@ -83,10 +89,6 @@ class EquiposController < ApplicationController
       final = Time.parse(params[:final])
       @equipos = @entrenador.equipos
       @eventos = reporte(@entrenador.id, inicio, final)
-      puts '#' * 20
-      puts @entrenador.name
-      puts @eventos
-      puts '#' * 20
     else
       @entrenador = current_user
       @equipos = @entrenador.equipos
@@ -113,16 +115,11 @@ class EquiposController < ApplicationController
     equipos.each do |equipo|
 
       equipo.eventos.each do |event|
-        puts '#' * 20
-        puts inicio
-        puts event.fecha
-        puts final
-        puts '#' * 20
+
         if (event.fecha >= inicio) && (event.fecha <= final)
-          puts "Si pasa por aqui"
           @events << event
-          p @events
         end
+        
       end
     end
     return @events

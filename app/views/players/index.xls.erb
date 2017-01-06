@@ -1,0 +1,30 @@
+<table>
+  <thead>
+    <tr>
+      <th>Apellido Paterno</th>
+      <th>APellido Materno</th>
+      <th>Nombres</th>
+      <th>Fecha de Nacimiento</th>
+      <th>Equipo</th>
+      <th>Sección</th>
+      <th>Grupo</th>
+      <th>Genero</th>
+      <th>Beca</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= player.apellidoPaterno %></td>
+        <td><%= player.apellidoMaterno %></td>
+        <td><%= player.nombres %></td>
+        <td><%= player.fechaNacimiento %></td>
+        <td><%= Equipo.find_by(id: player.equipo_id).name %></td>
+        <td><%= player.seccion %></td>
+        <td><%= player.grupo %></td>
+        <td><%= player.genero %></td>
+        <td><%= player.beca %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

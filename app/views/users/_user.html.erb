@@ -7,6 +7,10 @@
     <% end %>
   </div>
   <div class="second-user-line">
+    <p>Email: <%= user.email %></p>
+    <p>Teléfono: <%= user.phone %></p>
+  </div>
+  <div class="third-user-line">
     Equipos:
     <% user.equipos.each do |equipo| %>
       | <%= link_to equipo.name, equipo %>

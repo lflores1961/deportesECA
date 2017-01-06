@@ -6,6 +6,12 @@ class CategoriasController < ApplicationController
   # GET /categorias.json
   def index
     @categorias = Categoria.paginate(page: params[:page])
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @categorias.to_csv }
+      format.xls
+    end
   end
 
   # GET /categorias/1

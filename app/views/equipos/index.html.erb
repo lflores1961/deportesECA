@@ -20,5 +20,8 @@
     <%= render @equipos %>
   </tbody>
 </table>
-
+<p>
+  <%= link_to "CSV", equipos_path(format: "csv") %> |
+  <%= link_to "Excel", equipos_path(format: "xls") %>
+</p>
 <%= will_paginate %>

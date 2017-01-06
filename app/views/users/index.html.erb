@@ -6,5 +6,8 @@
 <ul class="users">
   <%= render @users %>
 </ul>
-
+<p>
+  <%= link_to "CSV", users_path(format: "csv") %> |
+  <%= link_to "Excel", users_path(format: "xls") %>
+</p>
 <%= will_paginate %>

@@ -69,6 +69,17 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
+  def self.to_csv(options = {})
+    desired_columns = ["name", "email", "phone"]
+    CSV.generate(options) do |csv|
+      csv << desired_columns
+      all.each do |user|
+        csv << user.attributes.values_at(*desired_columns)
+      end
+    end
+    
+  end
+
   private
 
     # Converts email to all lowercase.

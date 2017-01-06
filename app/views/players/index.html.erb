@@ -21,5 +21,8 @@
     <%= render @players %>
   </tbody>
 </table>
-
+<p>
+  <%= link_to "CSV", players_path(format: "csv") %> |
+  <%= link_to "Excel", players_path(format: "xls") %>
+</p>
 <%= will_paginate %>

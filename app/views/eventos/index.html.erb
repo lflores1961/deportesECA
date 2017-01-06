@@ -19,5 +19,8 @@
     <%= render @eventos %>
   </tbody>
 </table>
-
+<p>
+  <%= link_to "CSV", eventos_path(format: "csv") %> |
+  <%= link_to "Excel", eventos_path(format: "xls") %>
+</p>
 <%= will_paginate %>

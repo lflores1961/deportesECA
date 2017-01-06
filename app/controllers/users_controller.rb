@@ -5,6 +5,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where(activated: true).paginate(page: params[:page])
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @users.to_csv }
+      format.xls
+    end
   end
 
   def show

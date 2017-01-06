@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>Equipo</th>
+      <th>Categoría</th>
+      <th>Deporte</th>
+      <th>Rama</th>
+      <th>Entrenador</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @equipos.each do |equipo| %>
+      <tr>
+        <td><%= equipo.name %></td>
+        <td><%= Categoria.find_by(id: equipo.categoria).nombre %></td>
+        <td><%= equipo.deporte %></td>
+        <td><%= equipo.rama %></td>
+        <td><%= equipo.user.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

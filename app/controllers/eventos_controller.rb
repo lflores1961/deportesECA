@@ -7,6 +7,12 @@ class EventosController < ApplicationController
   # GET /eventos
   def index
     @eventos = Evento.paginate(page: params[:page])
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @eventos.to_csv }
+      format.xls
+    end
   end
 
   # GET /eventos/calendario
