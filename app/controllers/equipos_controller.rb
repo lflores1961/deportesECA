@@ -36,7 +36,7 @@ class EquiposController < ApplicationController
     @equipo = Equipo.new(equipo_params)
 
     if @equipo.save
-      flash[:success] = 'Se inserto exitosamente la nueva categoría.'
+      flash[:success] = "Se inserto exitosamente la nueva categoria."
       redirect_to equipos_path
     else
       render 'new'
@@ -83,6 +83,10 @@ class EquiposController < ApplicationController
       final = Time.parse(params[:final])
       @equipos = @entrenador.equipos
       @eventos = reporte(@entrenador.id, inicio, final)
+      puts '#' * 20
+      puts @entrenador.name
+      puts @eventos
+      puts '#' * 20
     else
       @entrenador = current_user
       @equipos = @entrenador.equipos
@@ -105,12 +109,20 @@ class EquiposController < ApplicationController
     entrenador = User.find(entrena)
     equipos = entrenador.equipos
 
+    @events = []
     equipos.each do |equipo|
-      @events = []
+
       equipo.eventos.each do |event|
-            if (event.fecha >= inicio) && (event.fecha <= final)
-              @events << event
-            end
+        puts '#' * 20
+        puts inicio
+        puts event.fecha
+        puts final
+        puts '#' * 20
+        if (event.fecha >= inicio) && (event.fecha <= final)
+          puts "Si pasa por aqui"
+          @events << event
+          p @events
+        end
       end
     end
     return @events

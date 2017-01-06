@@ -18,6 +18,9 @@
           <th colspan="2"><%= equipo.name %></th>
         </tr>
         <% @eventos.each do |even| %>
+          <% puts '#'*20 %>
+          <% puts even.tipoEvento %>
+          <% puts '#'*20 %>
           <% if even.equipo_id == equipo.id %>
             <tr class="repor_evento">
               <th>Evento:</th>
