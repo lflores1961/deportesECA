@@ -286,8 +286,12 @@ input {
 
   .start-date {}
 
-  .prev-month {}
-  .next-month { }
+  .prev-month {
+    background-color: #ffe6e6;
+  }
+  .next-month {
+    background-color: #e9eefc;
+  }
   .current-month {}
 
   .has-events {}

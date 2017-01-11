@@ -85,10 +85,10 @@ class EquiposController < ApplicationController
 
     if params[:entrenador]
       @entrenador = User.find(params[:entrenador].to_i)
-      inicio = Time.parse(params[:inicio])
-      final = Time.parse(params[:final])
+      @inicio = Time.parse(params[:inicio])
+      @final = Time.parse(params[:final])
       @equipos = @entrenador.equipos
-      @eventos = reporte(@entrenador.id, inicio, final)
+      @eventos = reporte(@entrenador.id, @inicio, @final)
     else
       @entrenador = current_user
       @equipos = @entrenador.equipos
@@ -119,7 +119,7 @@ class EquiposController < ApplicationController
         if (event.fecha >= inicio) && (event.fecha <= final)
           @events << event
         end
-        
+
       end
     end
     return @events

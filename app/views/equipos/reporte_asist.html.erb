@@ -38,4 +38,8 @@
     </tbody>
 
   </table>
+  <div data-no-turbolinks>
+    <%= link_to "Excel", reporte_asist_url(format: "xls", entrenador: @entrenador.id, inicio: @inicio, final: @final, controller: "equipos", action: "reporte_asist"), method: :post  %>
+  </div>
+
 </div>

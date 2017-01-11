@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   resources :categorias
   get '/equipos/forma_rep'
   post '/equipos/reporte_asist', to: 'equipos#reporte_asist', as: 'reporte_asist'
-  resources :equipos
   resources :players
   get '/eventos/calendario' => 'eventos#calendario', as: 'calendario'
   resources :eventos
@@ -25,4 +24,5 @@ Rails.application.routes.draw do
   # get '/asistencias/new', to: 'asistencias#new'
   post '/asistencias', to: 'asistencias#create'
   get '/validar/:equipo_id', to: 'players#validar'
+	resources :equipos
 end
