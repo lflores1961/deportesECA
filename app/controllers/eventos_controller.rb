@@ -93,7 +93,7 @@ class EventosController < ApplicationController
     end
 
     def set_tiposEvento
-      @tiposEvento = ['Entrenamiento', 'Juego']
+      @tiposEvento = ['Entrenamiento', 'Partido', 'Topes', 'Competencia', 'Ligas']
     end
 
     # Never trust big bad internet, always use strong params

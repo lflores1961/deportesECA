@@ -1,6 +1,77 @@
 <% provide(:title, "Ayuda") %>
     <h1>Ayuda</h1>
-    <p>Under construction</p>
-    <p>
-      <%= image_tag "underconstruction.jpg" %>
-    </p>
+    <% if current_user.admin? %>
+      <div class="row">
+          <div>
+            <h2>Consideraciones para la base de datos</h2>
+          </div>
+        <table>
+          <tr>
+            <td colspan="2">Orden lógico y secuencia de dependencias de la base de datos</td>
+          </tr>
+          <tr>
+            <td colspan="2">A continuación se presenta la lista de tablas que conforman la base de datos de la aplicación. Esta lista está ordenada de la tabla más simple a la más compleja, es decir, la primera tabla no tiene dependencias pero la siguente depende de la primera, es decir, que los registros o renglones de la segunda tabla están relacionados con alguno de los renglones de la anterior, de tal manera que si se elimina un renglón de la tabla anterior tendremos una situación de falta de integridad de la base de datos.</td>
+          </tr>
+          <tr>
+            <th class="col-left">Tabla</th>
+            <th>Recordar</th>
+          </tr>
+          <tr>
+            <td class="col-left">Deportes</td>
+            <td>
+              <span>
+                Esta es la tabla más simple pero la tabla de equipos depende de ella. Cuando borre un elemento, los equipos relacionados podrán estar en error. Asegurese de modificar la columna de deporte para los equipos afectados antes de borrar un elemento de la tabla.
+              </span><br>
+              <span>
+                En caso de que realmente requiera eliminar un elemento de la tabla Deportes, haga primero la modificación al registro de la tabla de Equipos, cambiando a otro deporte o al registro especial 'INDETERMINADO'.
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-left">Categorías</td>
+            <td>
+              <span>
+                Al igual que con la tabla de Deportes, los elementos de la tabla de Equipos depende de algún elemento de esta tabla, ante de borrar una categoría, verifique que los equipos que pertenecen a la categoría que será eliminada son asignados a otra categoría, esto implica que deberá crear la nueva categoría si esta no existe.
+              </span><br>
+              <span>
+                Si desea eliminar una categoría, deberá primero modificar el registro de Equipo que pertenece a la categoría asignandole otra categoría, esto implica que deberá crear la nueva categoría primero y luego hacer el cambio de categoría en el equipo. En caso de que no tenga claro que categoría deberá usar para el Equipo, asigne la categoría especial 'NO DEFINIDA'.
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-left">Entrenadores/Usuarios</td>
+            <td>
+              <span>
+                Tanto entrenadores como administradores están registrados en la tabla de Usuarios en la base de datos. El registro de entrenador deberá existir antes de poder asignarle los equipos que tendrá a su cargo. Por este motivo el administrador deberá asegurarse en caso de desear eliminar un entrenador, que él o los equipos que están asignados al entrenador por eliminar, sean asignados a otro entrenador antes de eliminar a aquél.
+              </span>
+              <span>
+                Para eliminar un entrenador sin afectar las dependencias de equipos, asegúrese de que cambie el entrenador del equipo por el nuevo entrenador primero, si el nuevo entrenador no tiene registro todavía, deberá crear primero el registro del entrenador y luego hacer el cambio en el equipo ó si no está definido el entrenador nuevo y de todos modos quiere eliminar el registro del entrenador saliente asigne el equipo al registro especial 'NO DETERMINADO'.
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-left">Equipos</td>
+            <td>
+              <span>
+                Los alumnos/jugadores deben pertenecer a un equipo para que su registro tenga integridad en la base de datos y para poder fundamentar las estadísticas que son el objetivo de esta aplicación, por lo cual el administrador deberá asegurarse que los jugadores estén asignados a un equipo en todos momento, esto es; si usted va a eliminar un equipo asegúrese que antes de eliminarlo los jugadores que están asignados a este sean asignados a otro equipo. Por este motivo los equipos deben existir antes de asignar a los jugadores.
+              </span>
+              <span>
+                En caso de requerir eliminar un equipo y aún no tener definidas las características del nuevo equipo al que serán asignados los jugadores, el administrador podrá asignar a los jugadores al registro especial de equipos 'POR DEFINIR' y proceder entonces a borrar el registro de equipo no deseado, pero recuerde: Antes de borrar un equipo hay que cambiar la asignación de equipo en el registro de TODOS los jugadores afectados.
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-left">Jugadores</td>
+            <td>
+              <span>
+                La tabla de jugadores está libre de dependencias críticas y usted podrá eliminar jugadores sin problema. Aún cuando cada registro de jugador contiene una referencia a un equipo, la relación no implica riesgo para la integridad de la base de datos.
+              </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    <% else %>
+      <span>
+        La aplicación es muy simple, la administración le asignará uno a varios equipos, usted solo podrá consultar los detalles de los equipos, modificar sus datos personales y capturar las asistencias de sus jugadores a los eventos planificados (Juegos, entrenamientos, etc.)
+      </span>
+    <% end %>

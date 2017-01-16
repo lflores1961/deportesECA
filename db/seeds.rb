@@ -5,6 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Usuario especial NO DETERMINADO para efectos de administración
+User.create!(name: "99 - NO DETERMINADO", email: "nomail@no.com", password: "0192837465",
+              password_confirmation: "0192837465", admin: false, activated: true, activated_at: Time.zone.now)
+
 User.create!(name:                   "Fernando Flores",
               email:                 "fernando.flores1961@gmail.com",
               password:              "foobar",
@@ -13,6 +18,7 @@ User.create!(name:                   "Fernando Flores",
               activated:             true,
               activated_at:          Time.zone.now)
 
+=begin
 40.times do |n|
   name = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
@@ -44,3 +50,16 @@ users.each do |user|
     user.equipos.create!(name: name, categoria: cat, deporte: depo, rama: rama)
   end
 end
+=end
+
+# Deporte INDETERMINADO para efectos administrativos
+Deporte.create!(nombre: "INDETERMINADO")
+
+# Categoria no definida para efectos de administración
+Categoria.create!(nombre: '99 - NO DEFINIDA', limInferior: "01/01/1900", limSuperior: "01/01/2030")
+
+# Equipo NO DETERMINADO para efectos de administración
+cat = Categoria.find_by(nombre: "99 - NO DEFINIDA")
+entrenador = User.find_by(name: "99 - NO DETERMINADO")
+Equipo.create!(name: "99 - NO DETERMINADO", categoria: cat.id, user_id: entrenador.id,
+                deporte: "INDETERMINADO", rama: "NO DEFINIDA")

@@ -64,6 +64,14 @@ class EquiposController < ApplicationController
   # DELETE /equipos/1
   # DELETE /equipos/1.json
   def destroy
+    # In order to guard Player dependency on Equipo and avoid the system to crash
+    # Execute player.seguro for all players associated to this team first
+    #
+    safeTeam = Equipo.find_by(name: "99 - NO DETERMINADO")
+    @equipo.players.each do |plyr|
+      plyr.seguro safeTeam.id
+    end
+
     @equipo.destroy
     flash[:success] = 'Se eliminó correctamente el equipo.'
     redirect_to equipos_url
@@ -127,7 +135,7 @@ class EquiposController < ApplicationController
 
   # Set @deportes to select from in form.
   def set_deportes
-    @deportes = ['football soccer', 'Volley ball', 'Basket ball', 'Soft ball', 'Tennis' ]
+    @deportes = [ 'FUTBOL', 'HANDBALL', 'BASKETBOL', 'PORRA', 'TKD', 'SOFTBALL', 'BEISBOL', 'VOLEYBOL', 'TENIS DE MESA', 'BANDA DE GUERRA', 'NATACIÓN', 'BADMINGTON', 'GIMNASIA ARTÍSTICA', 'TOCHITO', 'AJEDRÉZ' ]
   end
 
   def set_ramas

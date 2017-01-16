@@ -17,4 +17,10 @@ class Player < ApplicationRecord
       end
     end
   end
+
+  # Save players.equipo_id to avoid players dependency with Equipo to crash the system
+  # equipo must be assigned the special Equipo record '99 - NO DETERMINADO' id numbers
+  def seguro(equipo)
+    update_attribute(:equipo_id, equipo)
+  end
 end

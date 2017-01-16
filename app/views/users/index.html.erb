@@ -1,8 +1,15 @@
 <% provide(:title, 'Listado de usuarios') %>
 <h1>Listado de usuarios</h1>
 
-<%= will_paginate %>
 
+<div class="row">
+  <span class="col-sm-4">
+    <%= will_paginate %>
+  </span>
+  <span class="col-sm-4">
+    <%= link_to "Registrar Usuario", new_user_path, class: "btn btn-default" %>
+  </span>
+</div>
 <ul class="users">
   <%= render @users %>
 </ul>

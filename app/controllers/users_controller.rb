@@ -32,9 +32,12 @@ class UsersController < ApplicationController
       #flash[:success] = "Bienvenido a la aplicación de Deportes ECA"
       #redirect_to @user
       # End of -no activation block-
-      @user.send_activation_email
-      flash[:info] = "Por favor busque su correo de activación en su buzón de correo electrónico"
-      redirect_to root_url
+      # Uncomment next line to perform email activation
+      #@user.send_activation_email
+      # Comment next line if you are performing email activation
+      @user.activate
+      flash[:info] = "Se creo correctamente la cuenta del usuario"
+      redirect_to users_path
     else
       render 'new'
     end
