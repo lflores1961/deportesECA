@@ -70,14 +70,22 @@ class User < ApplicationRecord
   end
 
   def self.to_csv(options = {})
-    desired_columns = ["name", "email", "phone"]
+    desired_columns = ["id", "name", "email", "phone"]
     CSV.generate(options) do |csv|
       csv << desired_columns
       all.each do |user|
         csv << user.attributes.values_at(*desired_columns)
       end
     end
-    
+
+  end
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      usuario = find_by_id(row["id"]) || new
+      usuario.attributes = row.to_hash
+      usuario.save!
+    end
   end
 
   private

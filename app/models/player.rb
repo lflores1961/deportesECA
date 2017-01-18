@@ -8,13 +8,21 @@ class Player < ApplicationRecord
 
   # Convert column data to comma separated values
   def self.to_csv(options = {})
-    desired_columns = ["apellidoPaterno", "apellidoMaterno", "nombres", "fechaNacimiento", "equipo_id",
+    desired_columns = ["id", "apellidoPaterno", "apellidoMaterno", "nombres", "fechaNacimiento", "equipo_id",
                         "seccion", "grupo", "genero", "beca"]
     CSV.generate(options) do |csv|
       csv << desired_columns
       all.each do |player|
         csv << player.attributes.values_at(*desired_columns)
       end
+    end
+  end
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      jugador = find_by_id(row["id"]) || new
+      jugador.attributes = row.to_hash
+      jugador.save!
     end
   end
 

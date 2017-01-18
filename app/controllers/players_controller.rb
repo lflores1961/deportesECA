@@ -16,6 +16,13 @@ before_action :set_generos,   only: [:new, :edit, :update, :create]
     end
   end
 
+  # POST /players/import
+  def import
+    Player.import(params[:file])
+    flash[:success] = 'Se ha importado exitosamente el archivo de jugadores a la base de datos.'
+    redirect_to players_path
+  end
+
   # GET /players/new
   def new
     @player = Player.new

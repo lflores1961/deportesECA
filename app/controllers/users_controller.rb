@@ -13,6 +13,13 @@ class UsersController < ApplicationController
     end
   end
 
+  # POST /users/import
+  def import
+    User.import(params[:file])
+    flash[:success] = 'Se ha importado exitosamente el archivo de usuarios a la base de datos.'
+    redirect_to users_path
+  end
+
   def show
     @user = User.find(params[:id])
     redirect_to root_url and return unless @user.activated?

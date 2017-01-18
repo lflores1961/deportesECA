@@ -53,7 +53,11 @@ end
 =end
 
 # Deporte INDETERMINADO para efectos administrativos
-Deporte.create!(nombre: "INDETERMINADO")
+Deporte.create!(nombre: "99 - INDETERMINADO")
+deportes = [ 'FUTBOL', 'HANDBALL', 'BASKETBOL', 'PORRA', 'TKD', 'SOFTBALL', 'BEISBOL', 'VOLEYBOL', 'TENIS DE MESA', 'BANDA DE GUERRA', 'NATACIÓN', 'BADMINGTON', 'GIMNASIA ARTÍSTICA', 'TOCHITO', 'AJEDRÉZ' ]
+deportes.each do |dep|
+  Deporte.create!(nombre: dep)
+end
 
 # Categoria no definida para efectos de administración
 Categoria.create!(nombre: '99 - NO DEFINIDA', limInferior: "01/01/1900", limSuperior: "01/01/2030")
@@ -61,5 +65,6 @@ Categoria.create!(nombre: '99 - NO DEFINIDA', limInferior: "01/01/1900", limSupe
 # Equipo NO DETERMINADO para efectos de administración
 cat = Categoria.find_by(nombre: "99 - NO DEFINIDA")
 entrenador = User.find_by(name: "99 - NO DETERMINADO")
+deporte = Deporte.find_by(nombre: "99 - INDETERMINADO")
 Equipo.create!(name: "99 - NO DETERMINADO", categoria: cat.id, user_id: entrenador.id,
-                deporte: "INDETERMINADO", rama: "NO DEFINIDA")
+                deporte: deporte.id, rama: "NO DEFINIDA")

@@ -12,11 +12,11 @@
     </div>
     <div>
       <%= f.label :deporte %>
-      <%= f.select :deporte, @deportes, :placeholder => "Deporte que practica el equipo", class: 'form-control' %>
+      <%= f.collection_select( :deporte, @deportes, :id, :nombre, :placeholder => "Deporte que practica el equipo", class: 'form-control') %>
     </div>
     <div>
       <%= f.label :rama %>
-      <%= f.select :rama, @ramas, :placeholder => "Rama del equipo", class: 'form-control' %>
+      <%= f.select :rama, @ramas, :prompt => "Rama del equipo", class: 'form-control' %>
     </div>
     <div>
       <%= f.label :user_id, "Entrenador" %>

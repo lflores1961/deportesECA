@@ -1,0 +1,7 @@
+<%= provide(:title, "Deportes") %>
+<div class="container-fluid bg-2">
+  <h4>Deporte nuevo</h4>
+  <%= render 'form', deporte: @deporte %>
+</div>
+
+<%= link_to 'Back', deportes_path %>

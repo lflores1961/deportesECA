@@ -17,6 +17,13 @@ class EquiposController < ApplicationController
     end
   end
 
+  # POST /equipos/import
+  def import
+    Equipo.import(params[:file])
+    flash[:success] = 'Se ha importado exitosamente el archivo de equipos a la base de datos.'
+    redirect_to equipos_path
+  end
+
   # GET /equipos/1
   # GET /equipos/1.json
   def show
@@ -42,7 +49,7 @@ class EquiposController < ApplicationController
     @equipo = Equipo.new(equipo_params)
 
     if @equipo.save
-      flash[:success] = "Se inserto exitosamente la nueva categoria."
+      flash[:success] = "Se ha registrado exitosamente el nuevo equipo."
       redirect_to equipos_path
     else
       render 'new'
@@ -135,11 +142,13 @@ class EquiposController < ApplicationController
 
   # Set @deportes to select from in form.
   def set_deportes
-    @deportes = [ 'FUTBOL', 'HANDBALL', 'BASKETBOL', 'PORRA', 'TKD', 'SOFTBALL', 'BEISBOL', 'VOLEYBOL', 'TENIS DE MESA', 'BANDA DE GUERRA', 'NATACIÓN', 'BADMINGTON', 'GIMNASIA ARTÍSTICA', 'TOCHITO', 'AJEDRÉZ' ]
+    @deportes = Deporte.all
+    # @deportes = [ 'FUTBOL', 'HANDBALL', 'BASKETBOL', 'PORRA', 'TKD', 'SOFTBALL', 'BEISBOL', 'VOLEYBOL', 'TENIS DE MESA', 'BANDA DE GUERRA', 'NATACIÓN', 'BADMINGTON', 'GIMNASIA ARTÍSTICA', 'TOCHITO', 'AJEDRÉZ' ]
   end
 
   def set_ramas
-    @ramas = ['Varonil', 'Femenil', 'Mixto']
+    #@ramas = { 1 => 'Varonil', 2 => 'Femenil', 3 => 'Mixto' }
+    @ramas = ['VARONIL', 'FEMENIL', 'MIXTO']
   end
 
   # Use callbacks to share common setup or constraints between actions.

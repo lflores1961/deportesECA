@@ -14,6 +14,13 @@ class CategoriasController < ApplicationController
     end
   end
 
+  # POST /categorias/import
+  def import
+    Categoria.import(params[:file])
+    flash[:success] = "Categorías importadas a la base de datos."
+    redirect_to categorias_path
+  end
+
   # GET /categorias/1
   # GET /categorias/1.json
   def show

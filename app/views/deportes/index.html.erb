@@ -1,0 +1,48 @@
+<% provide(:title, 'Listado de deportes') %>
+
+<div class="row">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Listado de Deportes</h1>
+
+  <%= link_to 'Crear deporte', new_deporte_path, class: "btn btn-default" %>
+
+  <%= will_paginate %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @deportes.each do |deporte| %>
+        <tr>
+          <% if deporte.id != 1 %>
+            <td><%= deporte.nombre %></td>
+            <td><%= link_to '', edit_deporte_path(deporte), class: "glyphicon glyphicon-edit" %></td>
+            <td><%= link_to '', deporte, class: "glyphicon glyphicon-trash", method: :delete,
+                data: { confirm: '¿Está seguro?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <p>
+    Exportar
+    <%= link_to "CSV", deportes_path(format: "csv") %> |
+    <%= link_to "Excel", deportes_path(format: "xls") %>
+  </p>
+  <%= will_paginate %>
+
+  <span class="navbar-left">
+    <h4>Importar deportes (CSV)</h4>
+
+    <%= form_tag import_deportes_path, multipart: true, class: "navbar-form navbar-left search-form" do %>
+      <%= file_field_tag :file, class: "form-control" %>
+      <%= submit_tag "Importar deportes", class: "btn btn-default" %>
+    <% end %>
+  </span>
+</div>

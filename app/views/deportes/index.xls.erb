@@ -1,0 +1,15 @@
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @deportes.each do |deporte| %>
+      <tr>
+        <td><%= deporte.nombre %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

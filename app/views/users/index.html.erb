@@ -14,7 +14,16 @@
   <%= render @users %>
 </ul>
 <p>
+  Exportar
   <%= link_to "CSV", users_path(format: "csv") %> |
   <%= link_to "Excel", users_path(format: "xls") %>
 </p>
 <%= will_paginate %>
+<span class="navbar-left">
+  <h4>Importar usuarios (CSV)</h4>
+
+  <%= form_tag import_users_path, multipart: true, class: "navbar-form navbar-left search-form" do %>
+    <%= file_field_tag :file, class: "form-control" %>
+    <%= submit_tag "Importar usuarios", class: "btn btn-default" %>
+  <% end %>
+</span>
