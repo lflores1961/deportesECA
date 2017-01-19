@@ -1,0 +1,53 @@
+
+<div class="container">
+  <h3>Registro de asistencias</h3>
+  <h4>Equipo: <%= @equipo.name %></h4>
+  <%= form_for @evento do |f| %>
+
+    <div>
+      <%= @evento.tipoEvento %> <%= @evento.fecha %> <%= @evento.comment %>
+    </div><br>
+    <div class="row encabezado-asis">
+      <p class="col-sm-4">Alumno</p>
+      <p class="col-sm-4">Asistencia</p>
+      <p class="col-sm-4">Comentarios</p>
+    </div>
+
+    <div class="container">
+
+      <%= f.fields_for :asistencias do |asis| %>
+        <div class="row reng-asis">
+
+          <div class="col-sm-4">
+            <% jugador = @jugadores.find_by(id:asis.object.player_id) %>
+
+            <% puts "****************************" %>
+            <% p jugador %>
+            <% p asis.object %>
+            <% puts "****************************" %>
+            <%= jugador.apellidoPaterno %>
+						<%= asis.hidden_field :player_id, :value => jugador.id %>
+          </div>
+
+          <div class="col-sm-4">
+
+            <%= asis.select(:tipo, @tiposAsistencia) %>
+          </div>
+
+          <div class="col-sm-4">
+            <%= asis.text_field :comment %>
+          </div>
+        </div>
+      <% end %>
+      <br>
+      <div class="row">
+      <% puts "============================" %>
+      <% puts @evento.asistencias %>
+      <% puts "============================" %>
+      <%= f.hidden_field :registrado, :value => true %>
+      <%= f.submit 'Registrar', class: "btn btn-default", style: "width: 20em; align: center;"  %>
+      </div>
+    </div>
+
+  <% end %>
+</div>

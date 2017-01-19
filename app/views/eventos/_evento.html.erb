@@ -1,0 +1,9 @@
+<tr id="evento-<%= evento.id %>">
+  <td class="col-left"><%= evento.fecha.to_date %></td>
+  <td class="col-left"><%= evento.tipoEvento %></td>
+  <td class="col-left"><%= Equipo.find_by(id: evento.equipo_id).name %></td>
+  <td class="col-left"><%= evento.comment %></td>
+  <td><%= link_to '', edit_evento_path(evento), class: "glyphicon glyphicon-edit" %></td>
+  <td><%= link_to '', evento, class: "glyphicon glyphicon-trash", method: :delete,
+                      data: { confirm: '¿Es correcta la opción de borrar el evento?' } %></td>
+</tr>

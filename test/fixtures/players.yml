@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+armenta:
+  apellidoPaterno: Armenta
+  apellidoMaterno: Soto
+  nombres: Hector
+  fechaNacimiento: 2010-11-04
+  equipo: osos
+  seccion: Secundaria
+  grupo: 2A
+  genero: Masculino
+  beca: false
+
+beas:
+  apellidoPaterno: Beas
+  apellidoMaterno: Lopez
+  nombres: Myrna
+  fechaNacimiento: 2010-04-24
+  equipo: raptors
+  seccion: Secundaria
+  grupo: 2B
+  genero: Femenino
+  beca: false
+
+zama:
+  apellidoPaterno: Zamarripa
+  apellidoMaterno: Romo
+  nombres: Patricio
+  fechaNacimiento: 2009-06-13
+  equipo: osos
+  seccion: Secundaria
+  grupo: 3A
+  genero: Masculino
+  beca: true
+
+alba:
+  apellidoPaterno: Alba
+  apellidoMaterno: Perez
+  nombres: Juan
+  fechaNacimiento: 2009-08-21
+  equipo: raptors
+  seccion: Secundaria
+  grupo: 3B
+  genero: Masculino
+  beca: false

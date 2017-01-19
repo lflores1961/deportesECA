@@ -1,0 +1,53 @@
+<% provide(:title, "Equipos") %>
+<div class="container-fluid bg-2">
+  <section class="col-sm-8">
+
+
+  <p id="notice">
+    <%= notice %>
+  </p>
+
+  <h4>Equipo: <b><%= @equipo.name %></b></h4>
+  <table>
+    <tbody>
+      <tr>
+        <td class="col-left">Categoría:</td>
+        <td class="col-left"><%= @categoria.nombre %></td>
+      </tr>
+      <tr>
+        <td class="col-left">Deporte:</td>
+        <td class="col-left"><%= Deporte.find(@equipo.deporte).nombre %></td>
+      </tr>
+      <tr>
+        <td class="col-left">Rama:</td>
+        <td class="col-left"><%= @equipo.rama %></td>
+      </tr>
+      <tr>
+        <td class="col-left">Entrenador:</td>
+        <td class="col-left"><%= @entrenador.name %></td>
+      </tr>
+    </tbody>
+  </table>
+  <% if current_user.admin? %>
+    <%= link_to '', edit_equipo_path(@equipo), class: "glyphicon glyphicon-edit" %>
+    <%= link_to '', @equipo, class: "glyphicon glyphicon-trash", method: :delete,
+        data: { confirm: '¿Está seguro?' } %>
+  <% end %>
+  <br><h5>Listado de Jugadores</h5>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombres</th>
+        <th>Apellido paterno</th>
+        <th>Apellido materno</th>
+
+        <th colspan="3">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render 'eplayers' %>
+    </tbody>
+  </table>
+
+  </section>
+</div>

@@ -1,0 +1,22 @@
+<div class="col-sm-6 col-sm-offset-3">
+  <%= form_for(@categoria) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="field-tm">
+      <%= f.label :nombre, "Categoría" %>
+      <%= f.text_field :nombre, :placeholder => "Nombre de la categoría", class: 'form-control' %>
+    </div>
+
+    <div class="field-tm">
+      <%= f.label :limInferior, "Fecha Lim. Inferior" %>
+      <%= f.date_select :limInferior, start_year: 1996, use_two_digit_numbers: true,
+                        prompt: { day: 'Día', month: 'Mes', year: 'Año' } %>
+    </div>
+    <div class="field-tm">
+      <%= f.label :limSuperior, "Fecha Lim. Superior" %>
+      <%= f.date_select :limSuperior, start_year: 1996,use_two_digit_numbers: true,
+                        prompt: { day: 'Día', month: 'Mes', year: 'Año' } %>
+    </div>
+    <%= f.submit "Guardar", class: "btn btn-default" %>
+  <% end %>
+</div>

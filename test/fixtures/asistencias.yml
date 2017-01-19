@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+uno:
+  evento: entrene
+  player_id: armenta
+  tipo: asistencia
+  comment: Normal
+
+dos:
+  evento: juego
+  player_id: beas
+  tipo: permiso
+  comment: Cita con el Medico
+
+tres:
+  evento: entrene
+  player_id: zama
+  tipo: asistencia
+  comment: Normal

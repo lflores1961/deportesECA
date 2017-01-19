@@ -1,0 +1,47 @@
+<div class="row">
+  <aside class="col-xs-4">
+    <section class="user_info">
+      <%= render 'shared/user_info' %>
+    </section>
+  </aside>
+  <div class="col-xs-8">
+    <h3>Listado de eventos</h3>
+    <table>
+      <thead>
+        <th colspan="4">
+          <%= @equipo.name %>
+        </th>
+        <tr>
+          <th>Activar</th>
+          <th>Fecha</th>
+          <th>Tipo</th>
+          <th>Comentarios</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% @feed_eventos.each do |evento| %>
+
+          <% puts "**********************************" %>
+          <% puts "**  Evento ID:    #{evento.id}  " %>
+					<% puts "**  Evento: #{evento}" %>
+          <% puts "**********************************" %>
+          <tr id="evento-<%= evento.id %>">
+						<% if evento.registrado %>
+							<td class="eve-accion"><%= link_to '', evento_path(evento.id),
+																					class: "glyphicon glyphicon-eye-open", data: { equipo: @equipo } %></td>
+						<% else %>
+            	<td class="eve-accion"><%= link_to '', eventoPlayers_path(evento.id),
+                              class: "glyphicon glyphicon-off", data: { equipo: @equipo } %></td>
+						<% end %>
+            <td class="eve-fecha"><%= evento.fecha.to_date %></td>
+            <td class="eve-tipo"><%= evento.tipoEvento %></td>
+            <td class="eve-comment"><%= evento.comment %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+<div class="row">
+
+</div>

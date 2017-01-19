@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+entrene:
+  fecha: 2016-11-09
+  tipoEvento: Entrenamiento
+  equipo: osos
+  comment: Local
+
+juego:
+  fecha: 2016-11-13
+  tipoEvento: Juego
+  equipo: osos
+  comment: vsRaptors

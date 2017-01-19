@@ -1,0 +1,30 @@
+<table>
+      <tr>
+        <td>Entrenador:</td>
+        <td><%= @entrenador.name %></td>
+      </tr>
+  <% @equipos.each do |equipo| %>
+      <tr>
+        <td>Equipo:</td>
+        <td><%= equipo.name %></td>
+      </tr>
+    <% @eventos.each do |even| %>
+      <% if even.equipo_id == equipo.id %>
+      <tr>
+        <td>Evento:</td>
+        <td><%= even.tipoEvento %></td>
+        <td><%= even.fecha %></td>
+      </tr>
+        <% even.asistencias.each do |asist| %>
+      <tr>
+        <td><%= asist.player.apellidoPaterno %></td>
+        <td><%= asist.player.apellidoMaterno %></td>
+        <td><%= asist.player.nombres %></td>
+        <td><%= asist.tipo %></td>
+        <td><%= asist.comment %></td>
+      </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</table>

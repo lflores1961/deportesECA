@@ -1,0 +1,22 @@
+
+  <div id="container">
+    <div id="left">
+      <h1>Deportes ECA</h1>
+    </div>
+    <div id="right">
+      <p>
+        <%= @greeting %> <%= @user.name %>,
+      </p>
+
+      <p>
+        Bienvenido a la aplicación de deportes de la Escuela de la Ciudad de Aguascalientes.
+      </p>
+      <p>
+        Haz 'click' en el enlace para activar tu cuenta.
+      </p>
+    
+        <%= link_to "Activar cuenta", edit_account_activation_url(@user.activation_token,
+                                                                  email: @user.email) %>
+
+    </div>
+  </div>

@@ -1,0 +1,45 @@
+<% provide(:title, "Jugadores") %>
+<div class="container-fluid bg-2">
+  <p id="notice">
+    <%= notice %>
+  </p>
+
+  <h4><b><%= @player.nombres %> <%= @player.apellidoPaterno %> <%= @player.apellidoMaterno %></b></h4>
+  <table>
+    <tbody>
+      <tr>
+        <td class="jugador">Fecha de nacimiento:</td>
+        <td class="jugador"><%= @player.fechaNacimiento %></td>
+      </tr>
+      <tr>
+        <td class="jugador">Equipo:</td>
+        <td class="jugador"><%= @player.equipo.name %></td>
+      </tr>
+      <tr>
+        <td class="jugador">Sección:</td>
+        <td class="jugador"><%= @player.seccion %></td>
+      </tr>
+      <tr>
+        <td class="jugador">Grupo:</td>
+        <td class="jugador"><%= @player.grupo %></td>
+      </tr>
+      <tr>
+        <td class="jugador">Género:</td>
+        <td class="jugador"><%= @player.genero %></td>
+      </tr>
+      <tr>
+        <td class="jugador">Becado:</td>
+        <% if @player.beca == true %>
+          <td>Si</td>
+        <% else %>
+          <td>No</td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+  <% if current_user.admin? %>
+    <%= link_to '', edit_player_path(@player), class: "glyphicon glyphicon-edit" %>
+    <%= link_to '', @player, class: "glyphicon glyphicon-trash", method: :delete,
+        data: { confirm: '¿Está seguro?' } %>
+  <% end %>
+</div>

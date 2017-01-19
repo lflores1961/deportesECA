@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+osos:
+  name: Osos
+  categoria: 1
+  deporte: Soccer
+  rama: Varonil
+  user: michael
+
+raptors:
+  name: Raptors
+  categoria: 2
+  deporte: Basketball
+  rama: Femenil
+  user: michael

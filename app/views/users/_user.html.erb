@@ -1,0 +1,21 @@
+<li>
+  <% if user.id != 1 %>
+    <div class="main-user-row">
+      <%= gravatar_for user, size: 50 %>
+      <%= link_to user.name, user %>
+      <% if current_user.admin? && !current_user?(user) %>
+        | <%= link_to "eliminar", user, method: :delete, data: { confirm: "¿Seguro?" } %>
+      <% end %>
+    </div>
+    <div class="second-user-line">
+      <p>Email: <%= user.email %></p>
+      <p>Teléfono: <%= user.phone %></p>
+    </div>
+    <div class="third-user-line">
+      Equipos:
+      <% user.equipos.each do |equipo| %>
+        | <%= link_to equipo.name, equipo %>
+      <% end %>
+    </div>
+  <% end %>
+</li>

@@ -1,0 +1,26 @@
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-xs-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+    </aside>
+  </div>
+
+<% else %>
+  <div class="center jumbotron">
+    <div id="row-cont-jumbo">
+      <div id="left-jumbo">
+        <h1>Formando Campeones</h1>
+      </div>
+      <div id="right-jumbo">
+        <%= image_tag "castor.gif",  size: "100x70" %>
+      </div>
+    </div>
+    <h2>
+      Administración de
+      <strong>Deportes</strong>
+    </h2>
+
+</div>
+<% end %>

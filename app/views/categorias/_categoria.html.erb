@@ -1,0 +1,11 @@
+
+<tr id="categoria-<%= categoria.id %>">
+  <% if categoria.id != 1 %>
+    <td class="categoria"><%= link_to categoria.nombre, categoria %></td>
+    <td class="cat-limInf"><%= categoria.limInferior.strftime("%d/%m/%Y") %></td>
+    <td class="cat-limSup"><%= categoria.limSuperior.strftime("%d/%m/%Y") %></td>
+    <td><%= link_to '', edit_categoria_path(categoria), class: "glyphicon glyphicon-edit" %></td>
+    <td><%= link_to '', categoria, class: "glyphicon glyphicon-trash", method: :delete,
+        data: { confirm: '¿Está seguro?' } %></td>
+  <% end %>
+</tr>

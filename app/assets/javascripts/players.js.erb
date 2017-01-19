@@ -1,0 +1,16 @@
+$(document).ready( function(){
+  $("#player_equipo_id").change( function(){
+    var equipoID = $("#player_equipo_id").val();
+    var fechaNacimPlyr = $("#player_fechaNacimiento").val();
+    $.getJSON('/validar/' + equipoID, function(data){
+      var limInf = data.limiteInferior;
+      var limSup = data.limiteSuperior;
+      if (fechaNacimPlyr < limInf || fechaNacimPlyr > limSup) {
+        if (!confirm("La fecha de nacimiento del jugador está fuera de los límites de la categoría del equipo. ¿Desea inscribirlo en este equipo?")) {
+            $("#player_equipo_id").val(undefined);
+            $("#player_equipo_id").focus();
+        };
+      };
+    });
+  });
+});

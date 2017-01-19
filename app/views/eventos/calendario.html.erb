@@ -1,0 +1,17 @@
+<div class="col-sm-8">
+  <% if @user.admin? %>
+    <h3>Eventos (<%= @eventos.count %>)</h3>
+    <%= month_calendar events: @eventos do |date, eventos| %>
+      <%= date.day %>
+      <% eventos.each do |evento| %>
+        <div class="evento">
+          <% equipo = Equipo.find(evento.equipo_id) %>
+          <% act = evento.tipoEvento == "Entrenamiento" ? "Ent" : "Jgo" %>
+          <%= link_to "#{equipo.name}: #{act}", evento %>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    No permitido
+  <% end %>
+</div>

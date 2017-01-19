@@ -1,0 +1,27 @@
+<div class="col-sm-8">
+    <h3>Equipo: <%= @equipo.name %></h3>
+    <table class="eventos">
+      <thead>
+        <td><%= @evento.tipoEvento %></td>
+        <td><%= @evento.fecha %></td>
+        <td><%= @evento.comment %></td>
+      </thead>
+      <th>Jugador</th>
+      <th>Registro</th>
+      <th>Comentario</th>
+      <tbody>
+        <% @jugadores.each do |player| %>
+          <tr>
+            <td style="text-align: left;"><%= player.apellidoPaterno %></td>
+            <% if asist = @evento.asistencias.find_by(player_id:player.id) %>
+              <td><%= asist.tipo %></td>
+              <td><%= asist.comment %></td>
+            <% else %>
+              <td colspan="3">Nuevo Ingreso</td>
+            <% end %>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

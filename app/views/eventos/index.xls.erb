@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>Tipo de Evento</th>
+      <th>Equipo</th>
+      <th>Comentarios</th>
+      <th>Registrado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @eventos.each do |evento| %>
+      <tr>
+        <td><%= evento.fecha %></td>
+        <td><%= evento.tipoEvento %></td>
+        <td><%= Equipo.find_by(id: evento.equipo_id).name %></td>
+        <td><%= evento.comment %></td>
+        <td><%= evento.registrado %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

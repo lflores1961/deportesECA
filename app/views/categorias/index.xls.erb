@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>Categoría</th>
+      <th>Fecha Nac. Inf.</th>
+      <th>Fecha Nac. Sup.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categorias.each do |cate| %>
+      <tr>
+        <td><%= cate.nombre %></td>
+        <td><%= cate.limInferior %></td>
+        <td><%= cate.limSuperior %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

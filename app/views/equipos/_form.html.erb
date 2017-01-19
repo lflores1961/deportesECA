@@ -1,0 +1,28 @@
+<div class="col-sm-6 col-sm-offset-3">
+  <%= form_for(@equipo) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="field-tm">
+      <%= f.label :name, "Equipo" %>
+      <%= f.text_field :name, :placeholder => "Nombre del equipo", class: 'form-control' %>
+    </div>
+    <div>
+      <%= f.label :categoria %>
+      <%= f.collection_select( :categoria, @categorias, :id, :nombre, :placeholder => "Categoría del equipo", class: 'form-control') %>
+    </div>
+    <div>
+      <%= f.label :deporte %>
+      <%= f.collection_select( :deporte, @deportes, :id, :nombre, :placeholder => "Deporte que practica el equipo", class: 'form-control') %>
+    </div>
+    <div>
+      <%= f.label :rama %>
+      <%= f.select :rama, @ramas, :prompt => "Rama del equipo", class: 'form-control' %>
+    </div>
+    <div>
+      <%= f.label :user_id, "Entrenador" %>
+      <%= f.collection_select( :user_id, @usuarios, :id, :name, :placeholder => "Entrenador del equipo", class: 'form-control') %>
+    </div>
+
+    <%= f.submit "Guardar", class: "btn btn-default" %>
+  <% end %>
+</div>
