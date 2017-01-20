@@ -4,6 +4,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     @base_title = "Deportes ECA"
+    @user = users(:michael)
   end
 
   test "should get root" do
@@ -18,6 +19,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get help" do
+    log_in_as(@user)
     get help_path
     assert_response :success
     assert_select "title", "Ayuda | #{@base_title}"

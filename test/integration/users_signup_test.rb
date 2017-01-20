@@ -20,6 +20,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_select 'div.alert'
   end
 
+=begin This test is commented because it was conceived for the email activation option 
   test "valid signup information with account activation" do
     get acceso_path
     assert_difference 'User.count', 1 do
@@ -48,5 +49,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_template 'users/show'
     assert is_logged_in?
   end
+=end
 
 end

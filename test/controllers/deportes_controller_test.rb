@@ -20,7 +20,7 @@ class DeportesControllerTest < ActionDispatch::IntegrationTest
       post deportes_url, params: { deporte: { nombre: @deporte.nombre } }
     end
 
-    assert_redirected_to deporte_url(Deporte.last)
+    assert_redirected_to deportes_url
   end
 
   test "should show deporte" do

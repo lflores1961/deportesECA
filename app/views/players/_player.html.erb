@@ -6,6 +6,8 @@
   <td class="col-left"><%= Deporte.find(player.equipo.deporte).nombre %></td>
   <td class="col-left"><%= player.equipo.user.name %></td>
   <% if current_user.admin? %>
+    <% beca = player.beca ? "Si" : "No" %>
+    <td class="col-left"><%= beca %></td>
     <td><%= link_to '', edit_player_path(player), class: "glyphicon glyphicon-edit" %></td>
     <td><%= link_to '', player, class: "glyphicon glyphicon-trash", method: :delete,
             data: { confirm: '¿Está seguro?' } %></td>

@@ -16,7 +16,10 @@
         <th>Equipo</th>
         <th>Deporte</th>
         <th>Entrenador</th>
-        <th colspan="3">Acciones</th>
+        <% if current_user.admin? %>
+          <th>Beca</th>
+          <th colspan="3">Acciones</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
