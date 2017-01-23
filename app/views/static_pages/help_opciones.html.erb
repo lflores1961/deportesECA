@@ -1,0 +1,109 @@
+<% provide(:title, "Ayuda") %>
+<div class="row">
+  <div>
+    <h2>Opciones del menú principal</h2>
+  </div>
+  <table>
+    <tr>
+      <td colspan="2">Estas opciones solo se presentan a usuarios con privilegios de administrador (de izquierda a derecha).</td>
+    </tr>
+    <tr>
+      <td>Inicio</td>
+      <td>Esta opción le mostrará la familiar vista de sus datos con su propio avatar (si ha definido ya uno) junto con la lista de los equipos que tiene asignados, haciendo click sobre un equipo le mostrará LA LISTA DE EVENTOS DEFINIDOS PARA ESE EQUIPO en particular.<br> Siendo usted un administrador solo podrá ver los eventos de los equipos en la vista de calendario (opción 'Herramientas' -> 'Calendario').
+      </td>
+    </tr>
+    <tr>
+      <td>Ayuda</td>
+      <td>Esta misma página.</td>
+    </tr>
+    <tr>
+      <td>Usuarios</td>
+      <td>Esta opción le mostrará la lista de usuarios de la aplicación, administradores y entrenadores, con sus datos personales y la lista de equipos que tiene asignados. SI hace click sobre el nombre de los equipos podrá ver los detalles del equipo con la lista de alumnos/jugadores.<br>Al inicio de la lista está el botón [Registrar Usuario] con el que podrá dar de alta ususarios nuevos.<br>De igual manera, junto al nombre de cada usuario encontrará una liga para eliminar el registro de cada usuario, si usted hace click en 'Eliminar' el sistema le preguntará si está seguro, si usted está seguro y elimina un usuario NO HAY FORMA DE RECUPERAR EL REGISTRO de manera que si quiere recuperar el registro del usuario deberá crearlo de nueva cuenta.<br>Si usted hace click sobre el nombre de algún equipo asignado al usuario podrá ver los detalles del equipo y la lista de jugadores asignados.</td>
+    </tr>
+    <tr>
+      <td>Mantenimiento</td>
+      <td>Esta opción le mostrará la lista de elementos que conforman esta aplicación: Deportes, Categorías, Equipos, Jugadores y Eventos.<br>Haciendo click en estas opciones le mostrará el listado de elementos registrados, jungto con los mecanismos para crear, eliminar, importar y exportar archivos a Excel y en formato CSV (Comma Separated Values ó Valores separados por comas).</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Elementos:</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>
+        <table>
+          <tr>
+            <td>Deportes</td>
+            <td>Cada equipo practica un deporte específico y solo uno, esta es una lista simple y puede ser administrada.</td>
+          </tr>
+          <tr>
+            <td>Categorías</td>
+            <td>Cada equipo pertenece a una categoría definida, esta opción le permite crear, modificar y eliminar categorías circunscritas dentro de un rango de fechas.<br>EL rango de fechas se utiliza para validar la edad de los jugadores inscritos en el equipo.</td>
+          </tr>
+          <tr>
+            <td>Equipos</td>
+            <td>Este elemento es el centro de la aplicación, todos los alumnos pertenecen a un equipo y los eventos se programan por equipos. Esta opción le permite administrar (crear, modificar, eliminar, exportar e importar) registros de equipos, vea la descripción de dependencias <a href=help_relations_path>aquí</a> para una descripción detallada. </td>
+          </tr>
+          <tr>
+            <td>Jugadores</td>
+            <td>Con esta opción usted podrá crear registros de jugadores y tendrá la capacidad de modificar y eliminar registros además podrá importar listas enteras de jugadores así como exportarlos a Excel.</td>
+          </tr>
+          <tr>
+            <td>Eventos</td>
+            <td>Es en esta opción donde usted podrá crear, modificar y eliminar eventos para los equipos, estos eventos son cualquier actividad que usted necesite controlar asistencias. EL entrenador del equipo podrá ver los eventos creados aquí en la lista de eventos para cada equipo.</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>Herramientas</td>
+      <td>Esta opción da acceso a las herramientas principales para la administración de la aplicación: Calendario y Reporte de asistencias por Entrenador.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Elementos:</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>
+        <table>
+          <tr>
+            <td>Calendario</td>
+            <td>Esta opción le mostrará un formato de calendario mensual con la lista de eventos programados en cada día, mostrando el nombre del equipo y el tipo de evento abreviado: Ent, Jgo, etc. Haciendo click sobre el evento usted podrá ver la lista de asistencia de jugadores para ese evento, EN caso de que no exista todavía una definición por parte del entrenador verá la leyenda 'Nuevo Ingreso', en caso contrario podrá ver la asistencia de cada jugador.</td>
+          </tr>
+          <tr>
+            <td>Reporte</td>
+            <td>Esta opción le ayudará a definir los parámetros para generar un reporte de asistencia por entrenador, usted deberá definir el entrenador y el rango de fechas (inicial y final) para que el sistema seleccione los eventos que se registraron dentro de ese lapso.</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>Cuenta</td>
+      <td>Esta opción le permite gestionar los elementos de su propia cuenta, Perfil, Modificar Datos y Salir de Sesión.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Elementos:</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>
+        <table>
+          <tr>
+            <td>Perfil</td>
+            <td>Esta opción le mostrará sus datos personales y si tiene usted equipos asignados como entrenador aparecerá la lista de estos equipos, haciendo click en alguno de estos equipos podrá ver los detalles del equipo y la lista de jugadores inscritos en él.</td>
+          </tr>
+          <tr>
+            <td>Modificar Datos</td>
+            <td>Esta opción le permitirá verificar y modificar sus datos personales como Nombre, Email, Teléfono y podrá también cambiar su contraseña.<br>Para cambiar su contraseña deberá escribir al menos 8 caractéres alfanuméricos (letras y números) en el campo 'Password' y DEBERÁ REPETIR LA MISMA PALABRA en el campo 'Confirmación'.<br>Podrá usted también designar Administradores de la aplicación checando el recuadro que se encuentra bajo el campo confirmación.<br>Al final de la página se encuentra su imagen de avatar, si hace click en el link 'cambiar', será redirigido al sitio Gravatar.com donde podrá usted cambiar su imagen de avatar.</td>
+          </tr>
+          <tr>
+            <td>Salir de Sesión</td>
+            <td>COn esta opción da usted por terminada la sesión con la aplicación y vuelve a la pantalla de inicio de sesión.<br>Le recomiendo que si usted se va a ausentar de su estación de trabajo salga de la sesión para evitar que otra persona encuentre la sesión activa y pueda hacer mal uso de la aplicación.</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

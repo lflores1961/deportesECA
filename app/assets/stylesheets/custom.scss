@@ -18,6 +18,10 @@ $royalBlue: #4169e1;
 }
 /* Universal */
 
+.ayuda {
+  text-align: left;
+}
+
 body {
   padding-top: 80px;
 }
@@ -38,10 +42,20 @@ textarea {
   margin-bottom: 10px;
 }
 
+.navbar {
+  color: white;
+}
+
+.navbar-header {
+  color: white;
+}
+
 .navbar-inverse {
   background-color: $red;
   background: linear-gradient($red, $darkRed);
-  color: #ffffff;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .btn-default {
@@ -157,7 +171,7 @@ table, th, td {
 }
 
 td {
-  text-align: center;
+  text-align: left;
 }
 
 td.categoria {
