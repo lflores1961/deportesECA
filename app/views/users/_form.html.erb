@@ -16,5 +16,10 @@
   <%= f.label :password_confirmation, "Confirmación" %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+  <%= f.label :admin, "Administrador" %>
+    <%= f.check_box :admin %>
+    <span>(privilegios para crear usuarios y otros administradores.)</span>
+  
+
   <%= f.submit "Proceder", class: "btn btn-primary" %>
 <% end %>

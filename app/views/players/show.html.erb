@@ -27,14 +27,13 @@
         <td class="jugador">Género:</td>
         <td class="jugador"><%= @player.genero %></td>
       </tr>
-      <tr>
-        <td class="jugador">Becado:</td>
-        <% if @player.beca == true %>
-          <td>Si</td>
-        <% else %>
-          <td>No</td>
-        <% end %>
-      </tr>
+      <% if current_user.admin? %>
+        <tr>
+          <td class="jugador">Becado:</td>
+          <% beca = @player.beca ? "Si" : "No" %>
+            <td><%= beca %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
   <% if current_user.admin? %>

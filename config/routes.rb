@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'static_pages#home'
   get '/help', to: 'static_pages#help'
+  get '/help/relations', to: 'static_pages#help_relations'
+  get '/help/avatar', to: 'static_pages#help_avatar'
+  get '/help/opciones', to: 'static_pages#help_opciones'
   get '/about', to: 'static_pages#about'
   get '/acceso', to: 'users#new'
   post '/acceso', to: 'users#create'
