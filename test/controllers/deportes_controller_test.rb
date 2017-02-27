@@ -19,12 +19,7 @@ class DeportesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Deporte.count') do
       post deportes_url, params: { deporte: { nombre: @deporte.nombre } }
     end
-
-<<<<<<< HEAD
     assert_redirected_to deportes_url
-=======
-    assert_redirected_to deporte_url(Deporte.last)
->>>>>>> e35aac688a036f60c31dd580022348517590ca1c
   end
 
   test "should show deporte" do

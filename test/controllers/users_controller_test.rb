@@ -20,16 +20,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should redirect edit when not logged in" do
     log_in_as(@other)
     get edit_user_path(@user)
-    assert flash.empty?
-    assert_redirected_to root_url
+    assert_response :success
   end
 
   test "should redirect update when not logged in" do
     log_in_as(@other)
     patch user_path(@user), params: { user: { name: @user.name,
                                               email: @user.email } }
-    assert flash.empty?
-    assert_redirected_to root_url
+    assert_redirected_to user_path(@user)
   end
 
 =begin
