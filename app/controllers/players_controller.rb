@@ -70,7 +70,7 @@ before_action :set_generos,   only: [:new, :edit, :update, :create]
   def destroy
     @player.destroy
     flash[:success] = 'Se eliminó correctamente el jugador.'
-    redirect_to players_url
+    redirect_to :back
   end
 
   # GET /validar/:equipo_id

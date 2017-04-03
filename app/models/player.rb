@@ -12,7 +12,7 @@ class Player < ApplicationRecord
                         "seccion", "grupo", "genero", "beca"]
     CSV.generate(options) do |csv|
       csv << desired_columns
-      all.each do |player|
+      Player.all.each do |player|
         csv << player.attributes.values_at(*desired_columns)
       end
     end

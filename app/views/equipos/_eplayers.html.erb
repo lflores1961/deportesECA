@@ -1,5 +1,7 @@
+<% secuencia = 1 %>
 <% @players.each do |player| %>
   <tr id="player-<%= player.id %>">
+    <td class="col-left"><%= secuencia %></td>
     <td class="col-left"><%= link_to player.nombres, player %></td>
     <td class="col-left"><%= player.apellidoPaterno %></td>
     <td class="col-left"><%= player.apellidoMaterno %></td>
@@ -11,4 +13,5 @@
               data: { confirm: '¿Está seguro?' } %></td>
     <% end %>
   </tr>
+  <% secuencia += 1 %>
 <% end %>
