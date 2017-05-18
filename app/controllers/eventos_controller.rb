@@ -80,6 +80,11 @@ class EventosController < ApplicationController
     redirect_to eventos_url
   end
 
+  # GET /eventos/programa
+  def programa
+    
+  end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.

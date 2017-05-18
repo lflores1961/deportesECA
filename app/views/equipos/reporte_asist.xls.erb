@@ -1,16 +1,17 @@
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <table>
       <tr>
         <td>Entrenador:</td>
         <td><%= @entrenador.name %></td>
       </tr>
   <% @equipos.each do |equipo| %>
-      <tr>
+      <tr style="font-size:1.2em;">
         <td>Equipo:</td>
         <td><%= equipo.name %></td>
       </tr>
     <% @eventos.each do |even| %>
       <% if even.equipo_id == equipo.id %>
-      <tr>
+      <tr style="font-size:1.2em;">
         <td>Evento:</td>
         <td><%= even.tipoEvento %></td>
         <td><%= even.fecha %></td>

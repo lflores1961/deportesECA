@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     collection { post :import }
   end
   get '/eventos/calendario' => 'eventos#calendario', as: 'calendario'
+  get '/eventos/programa'   => 'eventos#programa',   as: 'programa'
   resources :eventos
   get '/equipos/:id/eventos_feed' => 'equipos#eventos_feed', as: 'eventosFeed'
   get '/eventos/:id/players_feed' => 'eventos#evento_players', as: 'eventoPlayers'

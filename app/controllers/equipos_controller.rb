@@ -112,6 +112,14 @@ class EquiposController < ApplicationController
       end
     end
 
+    # Setup Vertical asistencias as horizontal for each evento
+    # Creating a two dimensional array @reporte_rows indexed
+    @reporte_rows = []
+    # First row is type of events
+    # Second row is evento dat
+    first_row = ["Evento:"]
+    second_row = ["Fecha:"]
+    
     respond_to do |format|
       format.html
       format.xls
