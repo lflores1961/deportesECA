@@ -80,9 +80,52 @@ class EventosController < ApplicationController
     redirect_to eventos_url
   end
 
-  # GET /eventos/programa
+
+  # GET /eventos/forma_prog
+  def forma_prog
+    @entrenadores = User.all
+    @dias = %w[Dom Lun Mar Mie Jue Vie Sab]
+    @evento = Evento.new
+  end
+
+  # POST /eventos/programa
   def programa
-    
+    entrenador = User.find(params[:entrenador])
+    inicio = Date.parse(params[:inicio])
+    final = Date.parse(params[:final])
+    dias = params[:dias].map! {|ele| ele.to_i }
+    @tipoEvento = "Entrenamiento"
+
+    entrenador.equipos.each do |equipo|
+      for @fecha in (inicio..final) do
+        if dias.include?(@fecha.wday)
+          @equipo_id = equipo.id
+          @evento = Evento.new(parametros_evento)
+          if !@evento.save
+            flash[:error] = "No ha sido posible crear los eventos."
+            redirect_to root_path
+          else
+            flash[:success] = "Se han creado exitosamente los eventos."
+          end
+        end
+      end
+    end
+    redirect_to eventos_path
+  end
+
+  # GET /eventos/form_borrar
+  def form_borrar
+
+  end
+
+  # POST /eventos/borrar
+  def borra
+    inicio = Date.parse(params[:inicio])
+    final = Date.parse(params[:final])
+    even = Evento.where("fecha > '#{inicio}' AND fecha < '#{final}'")
+    even.destroy_all
+    flash[:success] = "Se eliminaron exitosamente los eventos."
+    redirect_to eventos_url
   end
 
   private
@@ -104,5 +147,15 @@ class EventosController < ApplicationController
     # Never trust big bad internet, always use strong params
     def evento_params
       params.require(:evento).permit(:fecha, :tipoEvento, :equipo_id, :comment, :registrado, :asistencias_attributes => [:evento_id, :player_id, :tipo, :comment])
+    end
+
+    # Alternate parameter assemble
+    def parametros_evento
+      evento = { :fecha => @fecha,
+                  :tipoEvento => @tipoEvento,
+                  :equipo_id => @equipo_id,
+                  :comment => "",
+                  :registrado => false
+                }
     end
 end

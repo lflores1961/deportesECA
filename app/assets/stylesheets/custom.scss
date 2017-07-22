@@ -333,3 +333,9 @@ input {
   margin-top: 45px;
   @include box_sizing;
 }
+
+.nopadding {
+   padding: 1px !important;
+   margin: 3px !important;
+   width: inherit;
+}

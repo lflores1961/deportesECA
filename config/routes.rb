@@ -27,8 +27,11 @@ Rails.application.routes.draw do
   resources :players do
     collection { post :import }
   end
+  get '/eventos/forma_prog' # Get programming parameters form
   get '/eventos/calendario' => 'eventos#calendario', as: 'calendario'
-  get '/eventos/programa'   => 'eventos#programa',   as: 'programa'
+  post '/eventos/programa'   => 'eventos#programa',   as: 'programa'
+  get '/eventos/form_borrar' # Get borrar parameters form
+  post '/eventos/borrar'    =>'eventos#borra',   as: 'borrar'
   resources :eventos
   get '/equipos/:id/eventos_feed' => 'equipos#eventos_feed', as: 'eventosFeed'
   get '/eventos/:id/players_feed' => 'eventos#evento_players', as: 'eventoPlayers'

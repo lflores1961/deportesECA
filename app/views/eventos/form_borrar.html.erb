@@ -1,0 +1,15 @@
+<% provide(:title, "Entrenamientos") %>
+<div class="col-sm-6 col-sm-offset-3">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Eliminar Entrenamientos en lotes</h1>
+
+  <%= form_tag(borrar_path) do %>
+    <%= label_tag(:inicio, "Fecha inicial:") %>
+    <%= date_field_tag :inicio, class: 'form-control' %>
+    <%= label_tag(:final, "Fecha final:") %>
+    <%= date_field_tag :final, class: 'form-control' %>
+    <%= submit_tag "Eliminar eventos", class: "btn btn-default" %>
+  <% end %>
+
+</div>

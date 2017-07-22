@@ -1,0 +1,25 @@
+<% provide(:title, "Entrenamientos") %>
+<div class="col-sm-6 col-sm-offset-3">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Programación de Entrenamientos</h1>
+
+  <%= form_tag(programa_path) do %>
+    <% dias = [] %>
+    <%= label_tag(:entrenador, "Entrenador:") %>
+    <%= select_tag :entrenador, options_from_collection_for_select(@entrenadores, "id", "name"), prompt: "Seleccione el entrenador", class: 'form-control' %>
+    <b>Dias:</b>
+    <div class="well">
+        <% @dias.each_with_index do |day, index| %>
+          <%= label_tag day, day, class: "checkbox-inline nopadding"; %>
+          <%= check_box_tag 'dias[]', index, checked = false, class: "nopadding" %>  |
+        <% end %>
+    </div>
+    <%= label_tag(:inicio, "Fecha inicial:") %>
+    <%= date_field_tag :inicio, class: 'form-control' %>
+    <%= label_tag(:final, "Fecha final:") %>
+    <%= date_field_tag :final, class: 'form-control' %>
+    <%= submit_tag "Crear evento", class: "btn btn-default" %>
+  <% end %>
+
+</div>
